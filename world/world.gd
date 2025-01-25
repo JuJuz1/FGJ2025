@@ -92,7 +92,7 @@ func game_end():
 
 
 func _on_game_ui_timer_start() -> void:
-	print("start")
+	#print("start")
 	timer_day.start()
 
 

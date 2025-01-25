@@ -48,7 +48,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_area_3d_baton_body_entered(body: Node3D) -> void:
 	if body is Citizen and body != latest_damaged_body and not can_play_hands_anim():
 		latest_damaged_body = body
-		body.take_damage(baton_damage)
+		body.take_damage(baton_damage, global_position.direction_to(body.global_position))
 
 
 func _on_area_3d_baton_body_exited(body: Node3D) -> void:
