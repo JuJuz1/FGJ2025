@@ -1,8 +1,14 @@
 extends Node3D
+## World script
+
+## Emojis
+@export var all_emojis: EmojiDataArrays
+var current_emoji: Resource
+var current_emoji_negative: bool
 
 ## Time
 var current_time: int = 0
-var starting_time: int = 60 ## TODO: change
+var starting_time: int = 15 ## TODO: change
 
 ## Day
 var current_day: int = 1
@@ -21,14 +27,30 @@ var max_misses: int = 3 ## If this reaches 0 -> the player loses
 
 @onready var player: Player = $Player
 @onready var player_spawn: Marker3D = $PlayerSpawn
+#@onready var player_spawn_direction: Marker3D = $PlayerSpawnDirection
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# TODO: introduction
+	
 	current_time = starting_time
 	player.global_position = player_spawn.global_position
+	#player.look_at(player_spawn_direction.global_position)
 	game_ui.show_label_day(current_day)
 	game_ui.show_label_time(current_time)
 	game_ui.hide_labels()
+	
+	generate_task()
+
+
+func generate_task() -> void:
+	current_emoji = all_emojis.neutral_emoji_array.pick_random()
+	var rand: float = randf_range(0, 1.0)
+	if rand < 0.5:
+		current_emoji_negative = true
+	else:
+		current_emoji_negative = false
+	game_ui.show_task(current_emoji, current_emoji_negative)
 
 
 func _input(event: InputEvent) -> void:
@@ -71,13 +93,13 @@ func change_day() -> void:
 
 func prepare_next_day() -> void:
 	player.global_position = player_spawn.global_position
+	#player.look_at(player_spawn_direction.global_position)
 	current_time = starting_time
 	game_ui.hide_labels()
 	game_ui.show_label_day(current_day)
 	game_ui.show_label_time(current_time)
 	game_ui.play_fade_out()
-	# TODO: spawn new citizens etc.
-
+	generate_task()
 
 func start_day() -> void:
 	GameManager.freeze = false

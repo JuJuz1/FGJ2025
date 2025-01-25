@@ -6,6 +6,7 @@ signal timer_start ## When we want to start the timer
 @onready var label_day_counter: Label = $LabelDayCounter
 @onready var label_game_lose: Label = $LabelGameLose
 @onready var label_game_win: Label = $LabelGameWin
+@onready var label_task: Label = $LabelTask
 
 @onready var label_time: Label = $BoxContainer/LabelTime
 
@@ -69,6 +70,20 @@ func play_fade_in() -> void:
 
 func play_fade_out() -> void:
 	anim_player.play("fade_out")
+
+
+func show_task(emoji: EmojiData, negative: bool) -> void:
+	label_task.text = "Your task is to analyze citizens and watch their language.\n"
+	if negative:
+		label_task.text += "No one shall speak ill of " + emoji.string + "."
+	else:
+		label_task.text += "No one shall speak good of " + emoji.string + "."
+	var tween: Tween = create_tween()
+	tween.tween_interval(8)
+	tween.tween_property(label_task, "modulate:a", 1, 0.5)
+	tween.tween_interval(5)
+	tween.tween_property(label_task, "modulate:a", 0, 1)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -7,6 +7,9 @@ class_name Citizen
 @export var max_health: int = 100
 @export var current_health: int = max_health
 
+enum Class {BAD, NEUTRAL, GOOD}
+@export var citizen_class: Class
+
 @onready var anim_player: AnimationPlayer = $character/AnimationPlayer
 @onready var timer_idle: Timer = $Timer
 
@@ -48,7 +51,8 @@ func _on_timer_timeout() -> void:
 
 
 func _on_timer_knockback_timeout() -> void:
-	anim_player.stop()
+	if anim_player.current_animation == "run":
+		anim_player.stop()
 
 
 func randomise_timer() -> void:

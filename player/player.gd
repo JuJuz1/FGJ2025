@@ -14,6 +14,7 @@ class_name Player
 const SENSITIVTY_DIVIDER: int = 100
 
 @onready var camera_holder: Node3D = $CameraHolder
+@onready var interactor: Interactor = $CameraHolder/Interactor
 
 @onready var hands_anim: AnimationPlayer = $hands/AnimationPlayer
 
@@ -71,6 +72,14 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack") and can_play_hands_anim():
 		hands_anim.play("punch")
+	
+	if Input.is_action_just_pressed("commend") and can_play_hands_anim():
+		if interactor.is_instance_valid(interactor.cached):
+			if interactor.cached.owner is Citizen:
+				hands_anim.play("commend") # TODO:
+				#if interactor.cached.owner is Citizen.Class.Bad:
+					# bad, good, neutral?
+					#pass
 	
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
