@@ -30,19 +30,25 @@ func update_health_label() -> void:
 
 
 func take_damage(amount: int, direction: Vector3) -> void:
-	var tween: Tween = create_tween()
+	var tween: Tween = create_tween().set_parallel(true)
 	tween.tween_property(self, "global_position:y", 1, 0.25).as_relative()
+	tween.tween_property(self, "rotation:y", randi_range(-deg_to_rad(-80), deg_to_rad(80)), 0.5).as_relative()
 	velocity = direction * 5.0
-	# TODO: show visually, logic
 	current_health = clampi(current_health - amount, 0, max_health)
 	update_health_label()
 	audio_stream_damage.play()
+	anim_player.play("Run")
 	if current_health == 0:
+		await audio_stream_damage.finished
 		queue_free()
 
 
 func _on_timer_timeout() -> void:
 	randomise_timer()
+
+
+func _on_timer_knockback_timeout() -> void:
+	anim_player.stop()
 
 
 func randomise_timer() -> void:

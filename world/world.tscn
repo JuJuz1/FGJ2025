@@ -7,15 +7,15 @@
 [ext_resource type="LabelSettings" uid="uid://cwd7v7t7ih3nq" path="res://ui/label_big.tres" id="3_fn3g3"]
 [ext_resource type="PackedScene" uid="uid://bgvcypy3uris4" path="res://world/lamp.tscn" id="4_h5o24"]
 [ext_resource type="PackedScene" uid="uid://c1geet6mko133" path="res://citizen/speech_bubble_3.tscn" id="6_sc4t8"]
-[ext_resource type="PackedScene" uid="uid://c22bs3vi7w8ly" path="res://graphics/3d/tapola_kiosk/tapola_kiosk.tscn" id="8_ai45w"]
+[ext_resource type="PackedScene" path="res://graphics/3d/tapola_kiosk/tapola_kiosk.tscn" id="8_ai45w"]
 [ext_resource type="PackedScene" uid="uid://c4rb3lcjvgfw1" path="res://graphics/3d/newspaper/newspaper.blend" id="8_ysn08"]
 [ext_resource type="Texture2D" uid="uid://ddihs0sjogbew" path="res://graphics/textures/121_street paving cobblestone texture-seamless.jpg" id="9_4papg"]
-[ext_resource type="PackedScene" uid="uid://daqxcvxcklayc" path="res://graphics/3d/dictator_statue/dictator_statue.tscn" id="11_mad0u"]
-[ext_resource type="PackedScene" uid="uid://wsjye3f4h3ln" path="res://graphics/3d/grasspool/grasspool_2.tscn" id="12_ocfjn"]
-[ext_resource type="PackedScene" uid="uid://dh5rtc1qckhyc" path="res://graphics/3d/house1/house_1.tscn" id="13_dqqhb"]
+[ext_resource type="PackedScene" path="res://graphics/3d/dictator_statue/dictator_statue.tscn" id="11_mad0u"]
+[ext_resource type="PackedScene" path="res://graphics/3d/grasspool/grasspool_2.tscn" id="12_ocfjn"]
+[ext_resource type="PackedScene" path="res://graphics/3d/house1/house_1.tscn" id="13_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://6fysjhehmsf4" path="res://graphics/3d/house2/house2.blend" id="14_h8lre"]
 [ext_resource type="PackedScene" uid="uid://b6boowli3w4bn" path="res://graphics/3d/house3/house3.blend" id="15_ysn08"]
-[ext_resource type="PackedScene" uid="uid://dliiyxt2p1pk3" path="res://graphics/3d/round_kiosk/round_kiosk_2.tscn" id="16_h8lre"]
+[ext_resource type="PackedScene" path="res://graphics/3d/round_kiosk/round_kiosk_2.tscn" id="16_h8lre"]
 [ext_resource type="PackedScene" uid="uid://576f0suqm7r2" path="res://graphics/3d/house4/house4.blend" id="16_m0cxt"]
 [ext_resource type="PackedScene" uid="uid://cxjl7qjkfabff" path="res://graphics/3d/tent/tent.tscn" id="18_m0cxt"]
 [ext_resource type="PackedScene" uid="uid://bp4uydxehljek" path="res://graphics/3d/tent/tent_bread.tscn" id="19_p2iis"]
@@ -234,14 +234,20 @@ collision_layer = 2
 
 [node name="Citizen" parent="Citizens" instance=ExtResource("3_4717r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6543, 1.19718, -6.52416)
+speed = 3.5
+max_health = 100
 
 [node name="SpeechBubble3" parent="Citizens/Citizen" instance=ExtResource("6_sc4t8")]
 
 [node name="Citizen2" parent="Citizens" instance=ExtResource("3_4717r")]
 transform = Transform3D(0.778966, 0, 0.627066, 0, 1, 0, -0.627066, 0, 0.778966, -1.75781, 1.19718, -6.52416)
+speed = 3.5
+max_health = 100
 
 [node name="Citizen3" parent="Citizens" instance=ExtResource("3_4717r")]
 transform = Transform3D(0.0199827, 0, 0.9998, 0, 1, 0, -0.9998, 0, 0.0199827, -1.75781, 1.19718, -3.88617)
+speed = 3.5
+max_health = 100
 
 [node name="Lamps" type="Node3D" parent="."]
 

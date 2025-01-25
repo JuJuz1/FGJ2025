@@ -17,7 +17,7 @@ height = 2.0277
 script = ExtResource("1_oul6g")
 
 [node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556241, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758789, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.172839)
@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.172839)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.117979, 0)
 
 [node name="hands" parent="." instance=ExtResource("3_g1dw6")]
-transform = Transform3D(0.7, -1.05697e-07, -1.20797e-07, -1.05697e-07, -0.7, -5.49058e-21, -1.05697e-07, 1.59598e-14, -0.8, 0, 0.0348759, 0.118493)
+transform = Transform3D(0.7, -1.05697e-07, -1.20797e-07, -1.05697e-07, -0.7, -5.49058e-21, -1.05697e-07, 1.59598e-14, -0.8, 0, 0.198976, 0.118493)
 
 [node name="Skeleton3D" parent="hands/Armature" index="0"]
 bones/1/rotation = Quaternion(0.497394, 0.502599, 0.500588, -0.499405)

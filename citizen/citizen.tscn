@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://q12kad4woxxt"]
+[gd_scene load_steps=12 format=3 uid="uid://q12kad4woxxt"]
 
 [ext_resource type="Script" uid="uid://ceagkbqps66pg" path="res://citizen/citizen.gd" id="1_3aquc"]
 [ext_resource type="PackedScene" uid="uid://6wk0j4mjmc3x" path="res://common/interaction/interactable.tscn" id="2_noc4a"]
 [ext_resource type="PackedScene" uid="uid://8ovkosbaagak" path="res://graphics/3d/character/character.blend" id="2_ssk5i"]
+[ext_resource type="AudioStream" uid="uid://2oxpn7xs14fw" path="res://sounds/npc_damage_1.wav" id="4_v0tud"]
+[ext_resource type="AudioStream" uid="uid://cu3yvykswtced" path="res://sounds/npc_damage_2.wav" id="5_841l3"]
+[ext_resource type="AudioStream" uid="uid://mloiuyqgeaid" path="res://sounds/npc_damage_3.wav" id="6_1pc7m"]
+[ext_resource type="AudioStream" uid="uid://bqfkxywap7mlj" path="res://sounds/npc_damage_4.wav" id="7_8bbin"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noc4a"]
 
@@ -14,6 +18,11 @@ height = 2.14088
 radius = 9.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1pc7m"]
+streams_count = 4
+stream_0/stream = ExtResource("4_v0tud")
+stream_1/stream = ExtResource("5_841l3")
+stream_2/stream = ExtResource("6_1pc7m")
+stream_3/stream = ExtResource("7_8bbin")
 
 [node name="Citizen" type="CharacterBody3D"]
 collision_layer = 9
@@ -24,11 +33,11 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Skeleton3D" parent="character/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.0187094, 0.00556608, 0.0143908, 0.999706)
-bones/3/rotation = Quaternion(-0.0230628, -0.186829, -0.329342, 0.925255)
-bones/5/rotation = Quaternion(-0.0401524, 0.0201563, 0.241434, 0.969377)
+bones/3/rotation = Quaternion(0.00674943, -0.255273, -0.299695, 0.919224)
+bones/5/rotation = Quaternion(-0.0723002, -0.0482424, 0.259365, 0.96186)
 bones/6/rotation = Quaternion(-0.0622699, 0.0357284, 0.0369611, 0.996735)
-bones/8/rotation = Quaternion(-0.329099, -0.0399786, -0.0522144, 0.942003)
-bones/10/rotation = Quaternion(-0.400581, -0.05595, 0.00668251, 0.914527)
+bones/8/rotation = Quaternion(-0.353646, 0.110673, 0.0147616, 0.928692)
+bones/10/rotation = Quaternion(-0.370332, 0.0976067, 0.0640899, 0.921531)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_noc4a")
@@ -51,6 +60,10 @@ shape = SubResource("CapsuleShape3D_ihwdb")
 wait_time = 5.0
 one_shot = true
 
+[node name="TimerKnockback" type="Timer" parent="."]
+wait_time = 1.1
+one_shot = true
+
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -68,6 +81,7 @@ stream = SubResource("AudioStreamRandomizer_1pc7m")
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerKnockback" to="." method="_on_timer_knockback_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 
