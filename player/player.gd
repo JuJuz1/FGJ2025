@@ -6,10 +6,17 @@ class_name Player
 @export var sprint_speed: float = 7.0
 @export var acceleration: float = 3.0
 @export var jump_velocity: float = 5.0
+@export_group("Combat")
+@export var baton_damage: int = 40
 @export_group("Mouse sensitivity")
-@export var sensitivity: float = 4.0 / 100
+@export var sensitivity: float = 4.0
+
+
+const SENSITIVTY_DIVIDER: int = 100
 
 @onready var camera_holder: Node3D = $CameraHolder
+
+@onready var label_fps: Label = $LabelFPS
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -18,9 +25,9 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		# Rotate the player character by y-axis (left and right)
-		rotate_y(deg_to_rad(-event.screen_relative.x * sensitivity))
+		rotate_y(deg_to_rad(-event.screen_relative.x * sensitivity / SENSITIVTY_DIVIDER))
 		# Rotates the camera holder around the x-axis (up and down)
-		camera_holder.rotate_x(deg_to_rad(-event.screen_relative.y * sensitivity))
+		camera_holder.rotate_x(deg_to_rad(-event.screen_relative.y * sensitivity / SENSITIVTY_DIVIDER))
 		# Clamp the rotation of the camera on the x-axis to prevent turning "over" the axis
 		camera_holder.rotation.x = clampf(camera_holder.rotation.x, deg_to_rad(-87), deg_to_rad(87))
 
@@ -53,5 +60,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	#print("Velocity ", velocity.length())
+	label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
 	
 	move_and_slide()

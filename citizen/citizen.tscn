@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://q12kad4woxxt"]
+[gd_scene load_steps=7 format=3 uid="uid://q12kad4woxxt"]
 
 [ext_resource type="Script" uid="uid://ceagkbqps66pg" path="res://citizen/citizen.gd" id="1_3aquc"]
 [ext_resource type="PackedScene" uid="uid://6wk0j4mjmc3x" path="res://common/interaction/interactable.tscn" id="2_noc4a"]
@@ -9,37 +9,57 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihwdb"]
 height = 2.14088
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ssk5i"]
+radius = 9.0
+
 [node name="Citizen" type="CharacterBody3D"]
 script = ExtResource("1_3aquc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_noc4a")
 
 [node name="character" parent="." instance=ExtResource("2_ssk5i")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Skeleton3D" parent="character/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.0187094, 0.00556608, 0.0143908, 0.999706)
-bones/3/rotation = Quaternion(-0.00733449, -0.18892, -0.263164, 0.946045)
-bones/5/rotation = Quaternion(-0.0664163, 0.0228025, 0.286623, 0.955466)
+bones/3/rotation = Quaternion(-0.0230628, -0.186829, -0.329342, 0.925255)
+bones/5/rotation = Quaternion(-0.0401524, 0.0201563, 0.241434, 0.969377)
 bones/6/rotation = Quaternion(-0.0622699, 0.0357284, 0.0369611, 0.996735)
-bones/8/rotation = Quaternion(-0.37686, 0.124238, 0.0339559, 0.917272)
-bones/10/rotation = Quaternion(-0.344293, 0.119959, 0.0642695, 0.928946)
+bones/8/rotation = Quaternion(-0.329099, -0.0399786, -0.0522144, 0.942003)
+bones/10/rotation = Quaternion(-0.400581, -0.05595, 0.00668251, 0.914527)
 
-[node name="Label3D" type="Label3D" parent="character"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 6.0652, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_noc4a")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50027, 0)
 billboard = 2
 text = "Citizen"
 
-[node name="Interactable" parent="character" instance=ExtResource("2_noc4a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+[node name="LabelHealth" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20476, 0)
+billboard = 2
 
-[node name="CollisionShape3D" parent="character/Interactable" index="0"]
+[node name="Interactable" parent="." instance=ExtResource("2_noc4a")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
 shape = SubResource("CapsuleShape3D_ihwdb")
 
-[connection signal="focused" from="character/Interactable" to="." method="_on_interactable_focused"]
-[connection signal="interacted" from="character/Interactable" to="." method="_on_interactable_interacted"]
-[connection signal="unfocused" from="character/Interactable" to="." method="_on_interactable_unfocused"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ssk5i")
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 
 [editable path="character"]
-[editable path="character/Interactable"]
+[editable path="Interactable"]
