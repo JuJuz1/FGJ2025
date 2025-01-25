@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp4uydxehljek"]
+
+[ext_resource type="PackedScene" uid="uid://d4ahnc5v2ygln" path="res://graphics/3d/tent/tent.blend" id="1_1coou"]
+[ext_resource type="PackedScene" uid="uid://dcdwavk27m2ue" path="res://graphics/3d/table/table_2.tscn" id="2_swue6"]
+[ext_resource type="PackedScene" uid="uid://dqomx1vawxu6" path="res://graphics/3d/breads/breads.tscn" id="3_swue6"]
+
+[node name="tent" instance=ExtResource("1_1coou")]
+
+[node name="grid_structure" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="table2" parent="." index="1" instance=ExtResource("2_swue6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.51188, -0.09006, 0.664622)
+
+[node name="breads" parent="." index="2" instance=ExtResource("3_swue6")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.53824, 0.768363, 0.40103)
