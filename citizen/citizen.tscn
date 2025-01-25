@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://q12kad4woxxt"]
+[gd_scene load_steps=7 format=3 uid="uid://q12kad4woxxt"]
 
 [ext_resource type="Script" uid="uid://ceagkbqps66pg" path="res://citizen/citizen.gd" id="1_3aquc"]
 [ext_resource type="PackedScene" uid="uid://6wk0j4mjmc3x" path="res://common/interaction/interactable.tscn" id="2_noc4a"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihwdb"]
 height = 2.14088
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ssk5i"]
+radius = 9.0
 
 [node name="Citizen" type="CharacterBody3D"]
 script = ExtResource("1_3aquc")
@@ -27,9 +30,13 @@ bones/10/rotation = Quaternion(-0.400581, -0.05595, 0.00668251, 0.914527)
 shape = SubResource("CapsuleShape3D_noc4a")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21304, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50027, 0)
 billboard = 2
 text = "Citizen"
+
+[node name="LabelHealth" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20476, 0)
+billboard = 2
 
 [node name="Interactable" parent="." instance=ExtResource("2_noc4a")]
 
@@ -40,10 +47,19 @@ shape = SubResource("CapsuleShape3D_ihwdb")
 wait_time = 5.0
 one_shot = true
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ssk5i")
+
 [connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 
 [editable path="character"]
 [editable path="Interactable"]
