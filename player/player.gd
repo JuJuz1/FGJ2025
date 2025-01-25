@@ -11,6 +11,8 @@ class_name Player
 
 @onready var camera_holder: Node3D = $CameraHolder
 
+@onready var label_fps: Label = $LabelFPS
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -53,5 +55,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	#print("Velocity ", velocity.length())
+	label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
 	
 	move_and_slide()

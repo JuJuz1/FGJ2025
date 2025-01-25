@@ -50,6 +50,12 @@ shape = SubResource("BoxShape3D_tcf2h")
 [node name="Citizen" parent="Citizens" instance=ExtResource("3_4717r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6543, 1.19718, -6.52416)
 
+[node name="Citizen2" parent="Citizens" instance=ExtResource("3_4717r")]
+transform = Transform3D(0.778966, 0, 0.627066, 0, 1, 0, -0.627066, 0, 0.778966, -1.75781, 1.19718, -6.52416)
+
+[node name="Citizen3" parent="Citizens" instance=ExtResource("3_4717r")]
+transform = Transform3D(0.0199827, 0, 0.9998, 0, 1, 0, -0.9998, 0, 0.0199827, -1.75781, 1.19718, -3.88617)
+
 [node name="Lamps" type="Node3D" parent="."]
 
 [node name="Lamp" parent="Lamps" instance=ExtResource("4_h5o24")]
