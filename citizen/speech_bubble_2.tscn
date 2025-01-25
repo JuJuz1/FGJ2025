@@ -20,3 +20,7 @@ texture = ExtResource("3_nnfvp")
 [node name="Emoji2" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 9, 0)
 texture = ExtResource("4_sf4ok")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

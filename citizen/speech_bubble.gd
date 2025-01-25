@@ -2,6 +2,10 @@ extends Node3D
 
 var player
 var children
+const DESPAWN_DELAY = 15  # How many seconds before speech bubble disappears
+
+@onready var despawn_timer: Timer = $DespawnTimer
+
 @export var all_emojis: Resource
 
 func _ready():
@@ -9,6 +13,7 @@ func _ready():
 	rotation.y = self.rotation.y + PI
 	player = get_node("/root/World/Player")
 	children = self.get_children()
+	despawn_timer.wait_time = DESPAWN_DELAY
 
 
 func _process(_delta):
@@ -127,3 +132,11 @@ func create_positive(topic: EmojiData):
 func appear():
 	var tween = self.create_tween()
 	tween.tween_property(self, "scale", Vector3(0.2, 0.2, 0.2), 1)
+	despawn_timer.start()
+
+
+func _on_despawn_timer_timeout():
+	var tween = self.create_tween().parallel()
+	tween.tween_property(self, "position:y", 4, 3).as_relative()
+	tween.tween_property(self, "modulate:a", 0, 3)
+	tween.tween_callback(func(): queue_free())
