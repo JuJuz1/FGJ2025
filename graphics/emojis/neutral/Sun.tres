@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://dwunsi8018mk"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_207y0"]
+[ext_resource type="Texture2D" uid="uid://b633kpylvbydc" path="res://graphics/emojis/neutral/Sun.svg" id="2_ktxpy"]
+
+[resource]
+script = ExtResource("1_207y0")
+string = "sun"
+svg = ExtResource("2_ktxpy")
+metadata/_custom_type_script = ExtResource("1_207y0")

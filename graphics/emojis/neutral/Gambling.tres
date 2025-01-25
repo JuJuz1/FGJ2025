@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://boya8qe5tqwmb"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_ovnjg"]
+[ext_resource type="Texture2D" uid="uid://clkltyo0e3p7s" path="res://graphics/emojis/neutral/Gambling.svg" id="2_jo1j8"]
+
+[resource]
+script = ExtResource("1_ovnjg")
+string = "gambling"
+svg = ExtResource("2_jo1j8")
+metadata/_custom_type_script = ExtResource("1_ovnjg")

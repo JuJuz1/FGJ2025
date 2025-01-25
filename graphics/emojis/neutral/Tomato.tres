@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://c8akabpre87si"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_74tr8"]
+[ext_resource type="Texture2D" uid="uid://frw83gngrnse" path="res://graphics/emojis/neutral/Tomato.svg" id="2_g2k1o"]
+
+[resource]
+script = ExtResource("1_74tr8")
+string = "tomatoes"
+svg = ExtResource("2_g2k1o")
+metadata/_custom_type_script = ExtResource("1_74tr8")

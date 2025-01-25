@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://dhx4ssaxrb5yk"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_mdrkp"]
+[ext_resource type="Texture2D" uid="uid://cxvi2ibf1fnue" path="res://graphics/emojis/neutral/Piano.svg" id="2_sm3j0"]
+
+[resource]
+script = ExtResource("1_mdrkp")
+string = "pianos"
+svg = ExtResource("2_sm3j0")
+metadata/_custom_type_script = ExtResource("1_mdrkp")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://5m8ow0cenkke"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_x55ku"]
+[ext_resource type="Texture2D" uid="uid://dyiy04jsa0fqi" path="res://graphics/emojis/negative/Swear.svg" id="2_a0arf"]
+
+[resource]
+script = ExtResource("1_x55ku")
+string = "swear"
+svg = ExtResource("2_a0arf")
+metadata/_custom_type_script = ExtResource("1_x55ku")

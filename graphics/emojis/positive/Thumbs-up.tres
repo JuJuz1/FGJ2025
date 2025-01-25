@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://d2hpy7xv6he2"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_8k6bx"]
+[ext_resource type="Texture2D" uid="uid://dkedivu3ib0ms" path="res://graphics/emojis/positive/ThumbsUp.svg" id="2_2hium"]
+
+[resource]
+script = ExtResource("1_8k6bx")
+string = "thumbs up"
+svg = ExtResource("2_2hium")
+metadata/_custom_type_script = ExtResource("1_8k6bx")

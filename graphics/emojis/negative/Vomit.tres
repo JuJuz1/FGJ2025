@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://d0wc1vd5qht8i"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_ejeyn"]
+[ext_resource type="Texture2D" uid="uid://c3qe7em3rw7xj" path="res://graphics/emojis/negative/Vomit.svg" id="2_qb1f7"]
+
+[resource]
+script = ExtResource("1_ejeyn")
+string = "vomit"
+svg = ExtResource("2_qb1f7")
+metadata/_custom_type_script = ExtResource("1_ejeyn")

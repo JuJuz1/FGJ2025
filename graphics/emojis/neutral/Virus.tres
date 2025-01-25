@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://ckmry4s7kwrsg"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_tv4l5"]
+[ext_resource type="Texture2D" uid="uid://ddc6nul1uc5m7" path="res://graphics/emojis/neutral/Virus.svg" id="2_3roth"]
+
+[resource]
+script = ExtResource("1_tv4l5")
+string = "viruses"
+svg = ExtResource("2_3roth")
+metadata/_custom_type_script = ExtResource("1_tv4l5")
