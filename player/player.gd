@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 		hands_anim.play("punch")
 	
 	if Input.is_action_just_pressed("commend") and can_play_hands_anim():
-		if interactor.is_instance_valid(interactor.cached):
+		if is_instance_valid(interactor.cached):
 			if interactor.cached.owner is Citizen:
 				hands_anim.play("commend") # TODO:
 				#if interactor.cached.owner is Citizen.Class.Bad:
