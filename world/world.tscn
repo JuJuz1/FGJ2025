@@ -1,14 +1,12 @@
-[gd_scene load_steps=37 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=35 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="Resource" uid="uid://clx4djcv6xvch" path="res://graphics/emojis/EmojiDataSet.tres" id="2_aysyn"]
 [ext_resource type="Script" uid="uid://bpyt1pr2letnh" path="res://world/game_ui.gd" id="2_mmdvd"]
 [ext_resource type="PackedScene" uid="uid://cwda0i8nqukni" path="res://player/player.tscn" id="2_tcf2h"]
-[ext_resource type="PackedScene" uid="uid://q12kad4woxxt" path="res://citizen/citizen.tscn" id="3_4717r"]
 [ext_resource type="LabelSettings" uid="uid://cwd7v7t7ih3nq" path="res://ui/label_big.tres" id="3_fn3g3"]
 [ext_resource type="PackedScene" uid="uid://bgvcypy3uris4" path="res://graphics/3d/lamp/lamp.tscn" id="4_h5o24"]
 [ext_resource type="LabelSettings" uid="uid://px7soueq4ux4" path="res://ui/label_medium.tres" id="5_llyeo"]
-[ext_resource type="PackedScene" uid="uid://c1geet6mko133" path="res://citizen/speech_bubble_3.tscn" id="6_sc4t8"]
 [ext_resource type="PackedScene" path="res://graphics/3d/tapola_kiosk/tapola_kiosk.tscn" id="8_ai45w"]
 [ext_resource type="PackedScene" uid="uid://c4rb3lcjvgfw1" path="res://graphics/3d/newspaper/newspaper.blend" id="8_ysn08"]
 [ext_resource type="Texture2D" uid="uid://ddihs0sjogbew" path="res://graphics/textures/121_street paving cobblestone texture-seamless.jpg" id="9_4papg"]
@@ -22,10 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://cxjl7qjkfabff" path="res://graphics/3d/tent/tent.tscn" id="18_m0cxt"]
 [ext_resource type="PackedScene" uid="uid://bp4uydxehljek" path="res://graphics/3d/tent/tent_bread.tscn" id="19_p2iis"]
 [ext_resource type="PackedScene" uid="uid://v02cxgfb0cib" path="res://graphics/3d/tent_closed_sides/tent_closed_sides.tscn" id="20_aysyn"]
-[ext_resource type="PackedScene" path="res://graphics/3d/circus_tent/circus_tent.tscn" id="21_aysyn"]
-[ext_resource type="PackedScene" path="res://graphics/3d/speaker_booth/speaker_booth.tscn" id="22_o1net"]
-[ext_resource type="PackedScene" path="res://graphics/3d/outdoor_chair/outdoor_chair.tscn" id="23_3ljsx"]
-[ext_resource type="PackedScene" path="res://graphics/3d/outdoor_table/outdoor_table.tscn" id="24_gi7ib"]
+[ext_resource type="PackedScene" uid="uid://cv88066xp68lx" path="res://graphics/3d/circus_tent/circus_tent.tscn" id="21_aysyn"]
+[ext_resource type="PackedScene" uid="uid://bqo4wxbyddomj" path="res://graphics/3d/speaker_booth/speaker_booth.tscn" id="22_o1net"]
+[ext_resource type="PackedScene" uid="uid://cprueilp7hyqg" path="res://graphics/3d/outdoor_chair/outdoor_chair.tscn" id="23_3ljsx"]
+[ext_resource type="PackedScene" uid="uid://bmrs7k2d3ijqo" path="res://graphics/3d/outdoor_table/outdoor_table.tscn" id="24_gi7ib"]
 
 [sub_resource type="Animation" id="Animation_4papg"]
 length = 0.001
@@ -207,7 +205,7 @@ theme_override_font_sizes/font_size = 50
 text = "You managed to fulfill your 
 job succesfully! You win!
 
-Helppoa"
+Easy job!"
 label_settings = ExtResource("5_llyeo")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -274,20 +272,112 @@ skeleton = NodePath("../..")
 
 [node name="Citizens" type="Node3D" parent="."]
 
-[node name="Citizen" parent="Citizens" instance=ExtResource("3_4717r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6543, 1.19718, -6.52416)
+[node name="SpawnPoints" type="Node3D" parent="Citizens"]
 
-[node name="SpeechBubble3" parent="Citizens/Citizen" instance=ExtResource("6_sc4t8")]
+[node name="Marker3D" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14968, 51.9899)
 
-[node name="Citizen2" parent="Citizens" instance=ExtResource("3_4717r")]
-transform = Transform3D(0.778966, 0, 0.627066, 0, 1, 0, -0.627066, 0, 0.778966, -1.75781, 1.19718, -6.52416)
+[node name="Marker3D2" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26819, 1.14968, 55.2939)
 
-[node name="SpeechBubble3" parent="Citizens/Citizen2" instance=ExtResource("6_sc4t8")]
+[node name="Marker3D3" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79586, 1.14968, 53.3959)
 
-[node name="Citizen3" parent="Citizens" instance=ExtResource("3_4717r")]
-transform = Transform3D(0.0199827, 0, 0.9998, 0, 1, 0, -0.9998, 0, 0.0199827, -1.75781, 1.19718, -3.88617)
+[node name="Marker3D4" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6098, 1.14968, 53.3959)
 
-[node name="SpeechBubble3" parent="Citizens/Citizen3" instance=ExtResource("6_sc4t8")]
+[node name="Marker3D5" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.831, 1.14968, 52.1074)
+
+[node name="Marker3D6" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.831, 1.14968, 60.1582)
+
+[node name="Marker3D7" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2415, 1.14968, 61.8531)
+
+[node name="Marker3D8" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2415, 1.14968, 54.3716)
+
+[node name="Marker3D9" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6572, 1.14968, 14.7794)
+
+[node name="Marker3D10" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6572, 1.14968, 13.0729)
+
+[node name="Marker3D11" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.914, 1.14968, 11.8594)
+
+[node name="Marker3D12" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.914, 1.14968, 13.7055)
+
+[node name="Marker3D13" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0026, 1.14968, 6.10278)
+
+[node name="Marker3D14" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0026, 1.14968, 4.39273)
+
+[node name="Marker3D15" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7357, 1.14968, 2.25911)
+
+[node name="Marker3D16" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7357, 1.14968, 2.25911)
+
+[node name="Marker3D17" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6366, 1.14968, 3.32591)
+
+[node name="Marker3D18" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34624, 1.14968, -17.1432)
+
+[node name="Marker3D19" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07284, 1.14968, -17.1432)
+
+[node name="Marker3D20" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66559, 1.14968, -15.5349)
+
+[node name="Marker3D21" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1308, 1.14968, -17.199)
+
+[node name="Marker3D22" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75876, 1.14968, -17.199)
+
+[node name="Marker3D23" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86705, 1.14968, -17.6084)
+
+[node name="Marker3D24" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52633, 4.00996, -19.943)
+
+[node name="Marker3D25" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52633, 4.00996, -19.943)
+
+[node name="Marker3D26" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2479, 1.22557, -17.5364)
+
+[node name="Marker3D27" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 12.2788, 1.22557, -17.5364)
+
+[node name="Marker3D28" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 45.5441, 1.22557, -11.0261)
+
+[node name="Marker3D29" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 44.1695, 1.22557, -9.96805)
+
+[node name="Marker3D30" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 47.2644, 1.22557, -8.28406)
+
+[node name="Marker3D31" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 49.133, 1.22557, -10.2233)
+
+[node name="Marker3D32" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 49.133, 1.22557, -1.50717)
+
+[node name="Marker3D33" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 47.0718, 1.22557, -1.50717)
+
+[node name="Marker3D34" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 48.0664, 1.22557, -2.24847)
+
+[node name="Marker3D35" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 48.0664, 1.22557, -2.24847)
 
 [node name="Lamps" type="Node3D" parent="."]
 

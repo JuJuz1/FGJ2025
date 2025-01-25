@@ -3,7 +3,7 @@ extends Node3D
 
 ## Emojis
 @export var all_emojis: EmojiDataArrays
-var current_emoji: Resource
+var current_emoji: EmojiData
 var current_emoji_negative: bool
 
 ## Time
@@ -21,6 +21,8 @@ var wage_threshhold: int = 100 ## TODO change dynamically
 var missed_wage_thresholds: int = 0 ## If the player misses the threshold -> increase
 var max_misses: int = 3 ## If this reaches 0 -> the player loses
 
+var max_citizens: int = 15
+
 @onready var game_ui: GameUI = $GameUI
 
 @onready var timer_day: Timer = $TimerDay
@@ -28,6 +30,10 @@ var max_misses: int = 3 ## If this reaches 0 -> the player loses
 @onready var player: Player = $Player
 @onready var player_spawn: Marker3D = $PlayerSpawn
 #@onready var player_spawn_direction: Marker3D = $PlayerSpawnDirection
+
+@onready var citizens: Node3D = $Citizens
+@onready var spawn_points: Node3D = $Citizens/SpawnPoints
+const CITIZEN = preload("res://citizen/citizen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,7 +46,22 @@ func _ready() -> void:
 	game_ui.show_label_time(current_time)
 	game_ui.hide_labels()
 	
+	create_citizens()
 	generate_task()
+
+
+func create_citizens() -> void:
+	var spawnpoints: Array = spawn_points.get_children()
+	spawnpoints.shuffle()
+	var spawned: int = 0
+	for child: Marker3D in spawnpoints:
+		var citizen: Citizen = CITIZEN.instantiate()
+		citizens.add_child(citizen)
+		citizen.global_position = child.global_position
+		citizen.rotate_y(randi_range(deg_to_rad(-50), deg_to_rad(50)))
+		spawned += 1
+		if spawned == max_citizens:
+			break
 
 
 func generate_task() -> void:

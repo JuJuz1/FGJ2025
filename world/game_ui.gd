@@ -73,7 +73,7 @@ func play_fade_out() -> void:
 
 
 func show_task(emoji: EmojiData, negative: bool) -> void:
-	label_task.text = "Your task is to analyze citizens and watch their language.\n"
+	label_task.text = "Your task is to analyze citizens and watch their language.\n\n"
 	if negative:
 		label_task.text += "No one shall speak ill of " + emoji.string + "."
 	else:
