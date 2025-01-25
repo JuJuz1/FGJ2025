@@ -11,22 +11,6 @@ func _ready() -> void:
 	labels.hide()
 
 
-#func _input(event: InputEvent) -> void:
-#	if event is InputEventKey:
-#		if event.is_action_pressed("use"):
-#	if check_raycast(cached):
-#		print("INTERACTED WITH: ", cached.owner.name, "'s ", cached.name)
-#		interact(cached)
-
-
-#func check_raycast(interactable: Interactable) -> bool:
-#	if ray_cast.is_colliding() and interactable: #and owner.velocity == Vector3.ZERO:
-#		if ray_cast.get_collider() == interactable:
-#			#get_viewport().set_input_as_handled()
-#			return true
-#	return false
-
-
 func focus(interactable: Interactable) -> void:
 	if not interactable.can_interact:
 		return
@@ -76,3 +60,5 @@ func _physics_process(_delta: float) -> void:
 		if is_instance_valid(cached):
 			unfocus(cached)
 			cached = null
+		else:
+			labels.hide()

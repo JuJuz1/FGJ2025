@@ -2,7 +2,7 @@ extends Node3D
 
 ## Time
 var current_time: int = 0
-var starting_time: int = 10 ## TODO: change
+var starting_time: int = 7 ## TODO: change
 
 ## Day
 var current_day: int = 1
@@ -28,6 +28,7 @@ func _ready() -> void:
 	player.global_position = player_spawn.global_position
 	game_ui.show_label_day(current_day)
 	game_ui.show_label_time(current_time)
+	game_ui.hide_labels()
 
 
 func _input(event: InputEvent) -> void:
@@ -46,18 +47,6 @@ func _on_timer_day_timeout() -> void:
 		change_day()
 
 
-## Change day
-func change_day() -> void:
-	current_day += 1
-	if current_day == max_days:
-		game_end()
-	# TODO: transition, teleport player, prepare new day
-	player.global_position = player_spawn.global_position
-	current_time = starting_time
-	timer_day.start()
-	game_ui.show_time()
-
-
 ## Handle wage logic and start new day
 func end_day() -> void:
 	# Pause game and show the results of the day
@@ -71,12 +60,39 @@ func end_day() -> void:
 	change_day()
 
 
+## Change day
+func change_day() -> void:
+	current_day += 1
+	if current_day == max_days:
+		game_end()
+	# TODO: transition, teleport player, prepare new day
+	game_ui.play_fade_in()
+
+
+func prepare_next_day() -> void:
+	player.global_position = player_spawn.global_position
+	current_time = starting_time
+	game_ui.hide_labels()
+	game_ui.show_label_day(current_day)
+	game_ui.show_label_time(current_time)
+	game_ui.play_fade_out()
+	# TODO: spawn new citizens etc.
+
+
+func start_day() -> void:
+	GameManager.freeze = false
+	game_ui.show_time()
+
+
 func game_end():
-	# TODO:
-	pass
+	# TODO: win or lose
+	game_ui.show_label_lose()
+	await get_tree().create_timer(5).timeout # TODO: signal
+	get_tree().reload_current_scene()
 
 
 func _on_game_ui_timer_start() -> void:
+	print("start")
 	timer_day.start()
 
 

@@ -40,8 +40,26 @@ func can_play_hands_anim() -> bool:
 	return hands_anim.current_animation != "punch"
 
 
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "punch":
+		latest_damaged_body = null
+
+
+func _on_area_3d_baton_body_entered(body: Node3D) -> void:
+	if body is Citizen and body != latest_damaged_body and not can_play_hands_anim():
+		latest_damaged_body = body
+		body.take_damage(baton_damage)
+
+
+func _on_area_3d_baton_body_exited(body: Node3D) -> void:
+	if body is Citizen:
+		pass
+
+
 # Movement handling
 func _physics_process(delta: float) -> void:
+	if GameManager.freeze:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		# TODO: maybe just change project gravity
@@ -80,15 +98,3 @@ func _physics_process(delta: float) -> void:
 	label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
 	
 	move_and_slide()
-
-
-func _on_area_3d_baton_body_entered(body: Node3D) -> void:
-	if body is Citizen and body != latest_damaged_body and not can_play_hands_anim():
-		print("Ez")
-		latest_damaged_body = body
-		body.take_damage(baton_damage)
-
-
-func _on_area_3d_baton_body_exited(body: Node3D) -> void:
-	if body is Citizen:
-		pass

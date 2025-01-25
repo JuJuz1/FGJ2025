@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name GameUI
 
-signal timer_start
+signal timer_start ## When we want to start the timer
 
 @onready var label_day_counter: Label = $LabelDayCounter
 @onready var label_game_lose: Label = $LabelGameLose
@@ -13,15 +13,17 @@ signal timer_start
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hide_labels()
-	label_time.text = ""
-	label_time.modulate.a = 0
+	#hide_labels()
+	pass
 
 
 func hide_labels() -> void:
 	for child in get_children():
 		if child is Label:
 			child.modulate.a = 0
+	
+	label_time.text = ""
+	label_time.modulate.a = 0
 
 
 func show_label_day(day: int) -> void:
@@ -42,6 +44,10 @@ func show_label_time(time: int) -> void:
 		timer_start.emit())
 
 
+func show_label_lose() -> void:
+	label_game_lose.show()
+
+
 func update_time(time: int) -> void:
 	var minutes: int = time / 60
 	var seconds: int = time % 60
@@ -57,9 +63,14 @@ func show_time() -> void:
 
 
 func play_fade_in() -> void:
+	GameManager.freeze = true
 	anim_player.play("fade_in")
 
 
+func play_fade_out() -> void:
+	anim_player.play("fade_out")
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
