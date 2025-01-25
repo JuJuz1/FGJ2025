@@ -1,4 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 *.blend1
+.meta
 /android/
+.mat
