@@ -19,6 +19,13 @@ enum Class {BAD, NEUTRAL, GOOD}
 @onready var audio_stream_talk: AudioStreamPlayer3D = $AudioTalk
 @onready var audio_stream_damage: AudioStreamPlayer3D = $AudioDamage
 
+var speech_bubble_2: PackedScene = preload("res://citizen/speech_bubble_2.tscn")
+var speech_bubble_3: PackedScene = preload("res://citizen/speech_bubble_3.tscn")
+var speech_bubble_4: PackedScene = preload("res://citizen/speech_bubble_4.tscn")
+var bubble
+var current_emoji: EmojiData
+var positive_opinion_forbidden: bool
+
 var knockback: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +33,7 @@ func _ready() -> void:
 	label_3d.text = name
 	update_health_label()
 	randomise_timer()
+	spawn_speech_bubble()
 
 
 func update_health_label() -> void:
@@ -100,3 +108,40 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * GameManager.gravity_modifier * delta
 	
 	move_and_slide()
+
+
+func _on_speech_bubble_timer_timeout():
+	spawn_speech_bubble()
+
+func spawn_speech_bubble():
+	var rand_int = randi() % 3  # Random int 0, 1 or 2
+	if rand_int == 0:
+		bubble = speech_bubble_2.instantiate()
+		add_child(bubble)
+	elif rand_int == 1:
+		bubble = speech_bubble_3.instantiate()
+		add_child(bubble)
+	else:
+		bubble = speech_bubble_4.instantiate()
+		add_child(bubble)
+	
+	var is_neutral_opinion: bool = randi() % 1000 < 200  # 20% chance to be true
+	match self.citizen_class:
+		Class.BAD:
+			if is_neutral_opinion: # Neutral speech bubble, 20% chance
+				bubble.create_neutral(current_emoji)
+			else: # 80% chance, forbidden speech bubble
+				if positive_opinion_forbidden: # If positive opinion forbidden and bad, create positive opinion
+					bubble.create_positive(current_emoji)
+				else: # If negative opinion forbidden, create negative opinion
+					bubble.create_negative(current_emoji)
+		Class.NEUTRAL:
+			bubble.create_neutral(current_emoji) # Always neutral
+		Class.GOOD:
+			if is_neutral_opinion: # Neutral speech bubble, 20% chance
+				bubble.create_neutral(current_emoji)
+			else: # create good opinion, opposite of what is forbidden
+				if positive_opinion_forbidden: # Create negative
+					bubble.create_negative(current_emoji)
+				else: # If negative opinion forbidden, create positive
+					bubble.create_positive(current_emoji)
