@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://4fldhbdmidvu"]
+
+[ext_resource type="Script" uid="uid://ts238m1dmggk" path="res://world/start_menu.gd" id="1_7sqll"]
+
+[node name="StartMenu" type="Node3D"]
+script = ExtResource("1_7sqll")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ButtonStart" type="Button" parent="Control/BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="ButtonCredits" type="Button" parent="Control/BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="ButtonQuit" type="Button" parent="Control/BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
