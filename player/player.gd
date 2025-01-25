@@ -73,10 +73,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and can_play_hands_anim():
 		hands_anim.play("punch")
 	
-	if Input.is_action_just_pressed("commend") and can_play_hands_anim():
+	if Input.is_action_just_pressed("award") and can_play_hands_anim():
 		if is_instance_valid(interactor.cached):
 			if interactor.cached.owner is Citizen:
-				hands_anim.play("commend") # TODO:
+				hands_anim.play("awarding")
 				#if interactor.cached.owner is Citizen.Class.Bad:
 					# bad, good, neutral?
 					#pass
@@ -100,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
-	if is_zero_approx(direction.length()) and can_play_hands_anim():
+	if is_zero_approx(direction.length()) and can_play_hands_anim() and hands_anim.current_animation != "awarding":
 		hands_anim.play("idle")
 	
 	#print("Velocity ", velocity.length())

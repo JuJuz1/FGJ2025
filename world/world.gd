@@ -21,7 +21,14 @@ var wage_threshhold: int = 100 ## TODO change dynamically
 var missed_wage_thresholds: int = 0 ## If the player misses the threshold -> increase
 var max_misses: int = 3 ## If this reaches 0 -> the player loses
 
+## Citizens
 var max_citizens: int = 15
+
+## Awards and punishes
+## TODO
+var awards_left: int = 3
+var current_punishes: int = 0
+var total_punishes: int = 0
 
 @onready var game_ui: GameUI = $GameUI
 
@@ -46,16 +53,28 @@ func _ready() -> void:
 	game_ui.show_label_time(current_time)
 	game_ui.hide_labels()
 	
-	create_citizens()
 	generate_task()
+	create_citizens()
 
 
 func create_citizens() -> void:
 	var spawnpoints: Array = spawn_points.get_children()
 	spawnpoints.shuffle()
 	var spawned: int = 0
+	var bad_citizens: int = 3
+	var good_citizens: int = 3
+	
 	for child: Marker3D in spawnpoints:
 		var citizen: Citizen = CITIZEN.instantiate()
+		if 0 < bad_citizens:
+			citizen.citizen_class = citizen.Class.BAD
+			bad_citizens -= 1
+		elif 0 < good_citizens:
+			citizen.citizen_class = citizen.Class.GOOD
+			good_citizens -= 1
+		else:
+			citizen.citizen_class = citizen.Class.NEUTRAL
+		citizen.positive_opinion_forbidden = not current_emoji_negative
 		citizens.add_child(citizen)
 		citizen.global_position = child.global_position
 		citizen.rotate_y(randi_range(deg_to_rad(-50), deg_to_rad(50)))
