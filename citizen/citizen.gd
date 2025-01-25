@@ -5,6 +5,7 @@ class_name Citizen
 func _ready() -> void:
 	pass # Replace with function body.
 
+
 func _on_interactable_focused(interactor: Interactor) -> void:
 	# TODO: outline shader
 	print_debug("Focused ", interactor.owner.name)

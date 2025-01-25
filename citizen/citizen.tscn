@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ceagkbqps66pg" path="res://citizen/citizen.gd" id="1_3aquc"]
 [ext_resource type="PackedScene" uid="uid://6wk0j4mjmc3x" path="res://common/interaction/interactable.tscn" id="2_noc4a"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_noc4a"]
-radius = 0.4
+[ext_resource type="PackedScene" uid="uid://8ovkosbaagak" path="res://graphics/3d/character/character.blend" id="2_ssk5i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noc4a"]
 
@@ -14,25 +12,34 @@ height = 2.14088
 [node name="Citizen" type="CharacterBody3D"]
 script = ExtResource("1_3aquc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_noc4a")
-skeleton = NodePath("../..")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_noc4a")
 
-[node name="Interactable" parent="." instance=ExtResource("2_noc4a")]
+[node name="character" parent="." instance=ExtResource("2_ssk5i")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
-[node name="CollisionShape3D" parent="Interactable" index="0"]
-shape = SubResource("CapsuleShape3D_ihwdb")
+[node name="Skeleton3D" parent="character/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.0187094, 0.00556608, 0.0143908, 0.999706)
+bones/3/rotation = Quaternion(-0.00733449, -0.18892, -0.263164, 0.946045)
+bones/5/rotation = Quaternion(-0.0664163, 0.0228025, 0.286623, 0.955466)
+bones/6/rotation = Quaternion(-0.0622699, 0.0357284, 0.0369611, 0.996735)
+bones/8/rotation = Quaternion(-0.37686, 0.124238, 0.0339559, 0.917272)
+bones/10/rotation = Quaternion(-0.344293, 0.119959, 0.0642695, 0.928946)
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21304, 0)
+[node name="Label3D" type="Label3D" parent="character"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 6.0652, 0)
 billboard = 2
 text = "Citizen"
 
-[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
-[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
-[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+[node name="Interactable" parent="character" instance=ExtResource("2_noc4a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[editable path="Interactable"]
+[node name="CollisionShape3D" parent="character/Interactable" index="0"]
+shape = SubResource("CapsuleShape3D_ihwdb")
+
+[connection signal="focused" from="character/Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="character/Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="character/Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="character"]
+[editable path="character/Interactable"]

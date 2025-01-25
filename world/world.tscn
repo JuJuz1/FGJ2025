@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=10 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="PackedScene" uid="uid://cwda0i8nqukni" path="res://player/player.tscn" id="2_tcf2h"]
 [ext_resource type="PackedScene" uid="uid://q12kad4woxxt" path="res://citizen/citizen.tscn" id="3_4717r"]
+[ext_resource type="PackedScene" uid="uid://bgvcypy3uris4" path="res://world/lamp.tscn" id="4_h5o24"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
+sky_top_color = Color(0.0646474, 0.0864207, 0.116699, 1)
+sky_horizon_color = Color(0.480649, 0.49063, 0.506388, 1)
 
 [sub_resource type="Sky" id="Sky_4717r"]
 sky_material = SubResource("ProceduralSkyMaterial_tcf2h")
@@ -26,7 +29,9 @@ script = ExtResource("1_6xmxd")
 environment = SubResource("Environment_6xmxd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.0555601, -0.998455, 0, 0.283827, 0.0157939, 0.958745, -0.957265, -0.053268, 0.284266, 0, 0, 0)
+transform = Transform3D(0.0555601, -0.998455, 5.08498e-08, 0.283827, 0.0157939, 0.958746, -0.957265, -0.053268, 0.284266, 0.0129623, -0.0267296, 0.0289888)
+light_color = Color(0.625597, 0.625597, 0.625597, 1)
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_tcf2h")]
@@ -40,5 +45,12 @@ mesh = SubResource("BoxMesh_6xmxd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_tcf2h")
 
-[node name="Citizen" parent="." instance=ExtResource("3_4717r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60802, -6.52416)
+[node name="Citizens" type="Node3D" parent="."]
+
+[node name="Citizen" parent="Citizens" instance=ExtResource("3_4717r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6543, 1.19718, -6.52416)
+
+[node name="Lamps" type="Node3D" parent="."]
+
+[node name="Lamp" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.366, 0.2, -3.581)
