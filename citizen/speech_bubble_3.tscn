@@ -1,16 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1geet6mko133"]
+[gd_scene load_steps=7 format=3 uid="uid://c1geet6mko133"]
 
 [ext_resource type="Script" uid="uid://f8a7dtineye4" path="res://citizen/speech_bubble.gd" id="1_awqxq"]
 [ext_resource type="Texture2D" uid="uid://bkf1ip87wlorg" path="res://graphics/textures/speech_bubble.png" id="1_q6jyo"]
 [ext_resource type="Texture2D" uid="uid://dpj51fj2g4tmw" path="res://graphics/emojis/negative/Angry.svg" id="2_awqxq"]
-[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="2_iq8u0"]
+[ext_resource type="Resource" uid="uid://clx4djcv6xvch" path="res://graphics/emojis/EmojiDataSet.tres" id="2_d5kek"]
 [ext_resource type="Texture2D" uid="uid://b2mh17j332pg1" path="res://graphics/emojis/neutral/Gaming.svg" id="3_d5kek"]
-[ext_resource type="Resource" uid="uid://btf3pr3f1fpj2" path="res://graphics/emojis/neutral/Apple.tres" id="3_dqwjx"]
 [ext_resource type="Texture2D" uid="uid://ba75e0i1vfd1t" path="res://graphics/emojis/neutral/Football.svg" id="4_iq8u0"]
 
 [node name="SpeechBubble3" type="Node3D"]
 script = ExtResource("1_awqxq")
-neutral_emojis = Array[ExtResource("2_iq8u0")]([ExtResource("3_dqwjx")])
+all_emojis = ExtResource("2_d5kek")
 
 [node name="BG" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.719101, 0, 0, 0, 1, 0, 8.5, 0)

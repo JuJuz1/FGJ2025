@@ -1,14 +1,29 @@
 extends Node3D
 class_name Interactor
 
+@export var label_punish_color: Color
+@export var label_commend_color: Color
+
 @onready var ray_cast: RayCast3D = $RayCast3D
 @onready var labels: HBoxContainer = $Labels
+
+@onready var v_box_container_punish: VBoxContainer = $Labels/VBoxContainerPunish
+@onready var v_box_container_commend: VBoxContainer = $Labels/VBoxContainerCommend
 
 ## Save the latest interactable
 var cached: Interactable
 
 func _ready() -> void:
+	set_label_colors()
 	labels.hide()
+
+
+func set_label_colors() -> void:
+	for child: Label in v_box_container_punish.get_children():
+		child.modulate = label_punish_color
+	
+	for child: Label in v_box_container_commend.get_children():
+		child.modulate = label_commend_color
 
 
 func focus(interactable: Interactable) -> void:
