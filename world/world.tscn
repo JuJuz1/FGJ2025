@@ -81,7 +81,25 @@ job succesfully! You win!"
 label_settings = ExtResource("3_fn3g3")
 horizontal_alignment = 1
 
+[node name="BoxContainer" type="BoxContainer" parent="GameUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_top = 18.0
+offset_right = -25.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="LabelTime" type="Label" parent="GameUI/BoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Time"
+horizontal_alignment = 1
+
 [node name="TimerDay" type="Timer" parent="."]
+autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6xmxd")
@@ -122,3 +140,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.366, 0.2, -3.581)
 
 [node name="PlayerSpawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609182, 3.44479)
+
+[connection signal="timeout" from="TimerDay" to="." method="_on_timer_day_timeout"]
