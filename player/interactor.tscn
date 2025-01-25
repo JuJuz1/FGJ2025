@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cytkggu8r0k17"]
+[gd_scene load_steps=3 format=3 uid="uid://cytkggu8r0k17"]
 
 [ext_resource type="Script" uid="uid://bonnlwhuoqoxs" path="res://player/interactor.gd" id="1_oa7u8"]
+[ext_resource type="LabelSettings" uid="uid://cpj36hvawgld7" path="res://ui/label_interactor.tres" id="2_n4xir"]
 
 [node name="Interactor" type="Node3D"]
 script = ExtResource("1_oa7u8")
+label_punish_color = Color(0.141176, 0.65098, 0, 1)
+label_commend_color = Color(0.941176, 0, 0.282353, 1)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0265771, 0)
@@ -26,16 +29,37 @@ offset_right = 68.5
 offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 150
+alignment = 1
 
-[node name="Label" type="Label" parent="Labels"]
+[node name="VBoxContainerPunish" type="VBoxContainer" parent="Labels"]
+layout_mode = 2
+
+[node name="LabelPunish" type="Label" parent="Labels/VBoxContainerPunish"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "asd"
+text = "Punish the citizen"
+label_settings = ExtResource("2_n4xir")
+
+[node name="LabelPunishCommand" type="Label" parent="Labels/VBoxContainerPunish"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "[Left Click]"
+label_settings = ExtResource("2_n4xir")
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Labels"]
+[node name="VBoxContainerCommend" type="VBoxContainer" parent="Labels"]
+layout_mode = 2
+
+[node name="LabelAppend" type="Label" parent="Labels/VBoxContainerCommend"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "asdasd"
+text = "Commend the citizen"
+label_settings = ExtResource("2_n4xir")
+
+[node name="LabelAppendCommand" type="Label" parent="Labels/VBoxContainerCommend"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = " [Right click]"
+label_settings = ExtResource("2_n4xir")
 horizontal_alignment = 1

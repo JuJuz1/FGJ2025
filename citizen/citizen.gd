@@ -32,7 +32,7 @@ func update_health_label() -> void:
 func take_damage(amount: int, direction: Vector3) -> void:
 	var tween: Tween = create_tween().set_parallel(true)
 	tween.tween_property(self, "global_position:y", 1, 0.25).as_relative()
-	tween.tween_property(self, "rotation:y", randi_range(-deg_to_rad(-80), deg_to_rad(80)), 0.5).as_relative()
+	tween.tween_property(self, "rotation:y", randf_range(-deg_to_rad(-80), deg_to_rad(80)), 0.5).as_relative()
 	velocity = direction * 5.0
 	current_health = clampi(current_health - amount, 0, max_health)
 	update_health_label()
@@ -88,6 +88,8 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if GameManager.freeze:
+		return
 	velocity.x = move_toward(velocity.x, 0, 5.0 * delta)
 	velocity.z = move_toward(velocity.z, 0, 5.0 * delta)
 	if not is_on_floor():

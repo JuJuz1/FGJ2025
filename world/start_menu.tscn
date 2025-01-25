@@ -26,17 +26,22 @@ grow_vertical = 2
 [node name="HBoxContainer" type="VBoxContainer" parent="Control/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 20
 
 [node name="ButtonStart" type="Button" parent="Control/BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 80)
 layout_mode = 2
+theme_override_font_sizes/font_size = 60
 text = "Start"
 
 [node name="ButtonCredits" type="Button" parent="Control/BoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 60
 text = "Credits"
 
 [node name="ButtonQuit" type="Button" parent="Control/BoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 60
 text = "Quit"
 
 [node name="Camera3D" type="Camera3D" parent="."]
