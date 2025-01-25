@@ -13,7 +13,6 @@ var citizen_class: Class
 @onready var anim_player: AnimationPlayer = $character/AnimationPlayer
 @onready var timer_idle: Timer = $Timer
 
-@onready var label_3d: Label3D = $Label3D
 @onready var label_health: Label3D = $LabelHealth
 
 @onready var audio_stream_talk: AudioStreamPlayer3D = $AudioTalk
@@ -30,9 +29,10 @@ var knockback: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	label_3d.text = name
 	update_health_label()
 	randomise_timer()
+	var rand: float = randf_range(2.0, 14.0)
+	await get_tree().create_timer(rand).timeout
 	spawn_speech_bubble()
 
 

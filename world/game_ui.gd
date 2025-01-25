@@ -11,6 +11,7 @@ signal timer_start ## When we want to start the timer
 @onready var label_time: Label = $BoxContainer/LabelTime
 
 @onready var label_awards: Label = $LabelAwards
+@onready var label_wage: Label = $LabelWage
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
@@ -45,7 +46,8 @@ func show_label_time(time: int) -> void:
 	tween.tween_property(label_time, "modulate:a", 1, 1)
 	tween.tween_callback(func(): 
 		timer_start.emit()
-		label_awards.modulate.a = 1)
+		label_awards.modulate.a = 1
+		label_wage.modulate.a = 1)
 
 
 func show_label_lose() -> void:
@@ -89,7 +91,7 @@ func show_task(emoji: EmojiData, negative: bool) -> void:
 	tween.tween_property(label_task, "modulate:a", 0, 1)
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	label_awards.text = "Awards left: " + str(GameManager.awards_left)
+	label_wage.text = "Total wage: " + str(GameManager.total_wage)

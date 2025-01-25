@@ -8,18 +8,11 @@ var current_emoji_negative: bool
 
 ## Time
 var current_time: int = 0
-var starting_time: int = 60 ## TODO: change
+var starting_time: int = 15 ## TODO: change 420
 
 ## Day
 var current_day: int = 1
 var max_days: int = 5
-
-## Wage
-var current_wage: int = 0 ## Accumulated during the day
-var total_wage: int = 0 ## Total
-var wage_threshhold: int = 100 ## TODO change dynamically
-var missed_wage_thresholds: int = 0 ## If the player misses the threshold -> increase
-var max_misses: int = 3 ## If this reaches 0 -> the player loses
 
 ## Citizens
 var max_citizens: int = 15
@@ -30,7 +23,7 @@ var max_citizens: int = 15
 
 @onready var player: Player = $Player
 @onready var player_spawn: Marker3D = $PlayerSpawn
-#@onready var player_spawn_direction: Marker3D = $PlayerSpawnDirection
+@onready var player_spawn_direction: Marker3D = $PlayerSpawnDirection
 
 @onready var citizens: Node3D = $Citizens
 @onready var spawn_points: Node3D = $Citizens/SpawnPoints
@@ -42,7 +35,7 @@ func _ready() -> void:
 	
 	current_time = starting_time
 	player.global_position = player_spawn.global_position
-	#player.look_at(player_spawn_direction.global_position)
+	player.look_at(player_spawn_direction.global_position)
 	game_ui.show_label_day(current_day)
 	game_ui.show_label_time(current_time)
 	game_ui.hide_labels()
@@ -52,6 +45,10 @@ func _ready() -> void:
 
 
 func create_citizens() -> void:
+	for child in citizens.get_children():
+		if child is Citizen:
+			child.queue_free()
+	
 	var spawnpoints: Array = spawn_points.get_children()
 	spawnpoints.shuffle()
 	var spawned: int = 0
@@ -107,13 +104,13 @@ func _on_timer_day_timeout() -> void:
 ## Handle wage logic and start new day
 func end_day() -> void:
 	# Pause game and show the results of the day
-	if current_wage < wage_threshhold:
-		missed_wage_thresholds += 1
-		if missed_wage_thresholds == max_misses:
+	if GameManager.current_wage < GameManager.wage_threshhold:
+		GameManager.missed_wage_thresholds += 1
+		if GameManager.missed_wage_thresholds == GameManager.max_misses:
 			game_end()
 	
-	total_wage += current_wage
-	current_wage = 0
+	GameManager.total_wage += GameManager.current_wage
+	GameManager.current_wage = 0
 	change_day()
 
 
@@ -128,7 +125,7 @@ func change_day() -> void:
 
 func prepare_next_day() -> void:
 	player.global_position = player_spawn.global_position
-	#player.look_at(player_spawn_direction.global_position)
+	player.look_at(player_spawn_direction.global_position)
 	current_time = starting_time
 	player.awarded_citizens.clear()
 	GameManager.awards_left = 3
@@ -137,6 +134,7 @@ func prepare_next_day() -> void:
 	game_ui.show_label_time(current_time)
 	game_ui.play_fade_out()
 	generate_task()
+	create_citizens()
 
 
 func start_day() -> void:
