@@ -6,7 +6,7 @@ const DESPAWN_DELAY = 15  # How many seconds before speech bubble disappears
 
 @onready var despawn_timer: Timer = $DespawnTimer
 
-@export var all_emojis: Resource
+@export var all_emojis: EmojiDataArrays
 
 func _ready():
 	self.set_scale(Vector3(0, 0, 0))
@@ -42,7 +42,7 @@ func get_random_positive_emoji()-> EmojiData:
 # Creates speech bubble beginning with a negative emoji and containing 'topic'
 func create_negative(topic: EmojiData):
 	children[1].set_texture(get_random_negative_emoji().svg) # Set first emoji to a random negative emoji
-	var emoji_count: int = self.get_child_count() - 1
+	var emoji_count: int = self.get_child_count() - 2
 	match emoji_count:
 		2:
 			children[2].set_texture(topic.svg) # Set 'topic' emoji
@@ -80,7 +80,7 @@ func create_neutral(topic: EmojiData):
 		children[1].set_texture(get_random_negative_emoji().svg) # Set first emoji to a random negative emoji
 	else:
 		children[1].set_texture(get_random_positive_emoji().svg) # Set first emoji to a random positive emoji
-	var emoji_count: int = self.get_child_count() - 1
+	var emoji_count: int = self.get_child_count() - 2
 	match emoji_count:
 		2:
 			children[2].set_texture(get_random_neutral_emoji_except(topic).svg)
@@ -97,7 +97,7 @@ func create_neutral(topic: EmojiData):
 # Creates speech bubble beginning with a positive emoji and containing 'topic'
 func create_positive(topic: EmojiData):
 	children[1].set_texture(get_random_positive_emoji().svg) # Set first emoji to a random positive emoji
-	var emoji_count: int = self.get_child_count() - 1
+	var emoji_count: int = self.get_child_count() - 2
 	match emoji_count:
 		2:
 			children[2].set_texture(topic.svg) # Set 'topic' emoji
@@ -136,7 +136,16 @@ func appear():
 
 
 func _on_despawn_timer_timeout():
-	var tween = self.create_tween().parallel()
+	var children: Array = self.get_children()
+	var sprites: Array
+	for child in children:
+		if child is Sprite3D:
+			sprites.append(child)
+	
+	var tween = self.create_tween().set_parallel(true)
 	tween.tween_property(self, "position:y", 4, 3).as_relative()
-	tween.tween_property(self, "modulate:a", 0, 3)
-	tween.tween_callback(func(): queue_free())
+	for sprite: Sprite3D in sprites:
+		tween.tween_property(sprite, "modulate:a", 0, 4)
+	await get_tree().create_timer(4, false).timeout
+	#tween.tween_callback(func(): queue_free())
+	queue_free()

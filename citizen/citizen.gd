@@ -8,7 +8,7 @@ class_name Citizen
 @export var current_health: int = max_health
 
 enum Class {BAD, NEUTRAL, GOOD}
-@export var citizen_class: Class
+var citizen_class: Class
 
 @onready var anim_player: AnimationPlayer = $character/AnimationPlayer
 @onready var timer_idle: Timer = $Timer

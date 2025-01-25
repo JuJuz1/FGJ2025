@@ -21,6 +21,7 @@ const SENSITIVTY_DIVIDER: int = 100
 @onready var label_fps: Label = $LabelFPS
 
 var latest_damaged_body: Citizen
+var awarded_citizens: Array[Citizen] = []
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -73,13 +74,14 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and can_play_hands_anim():
 		hands_anim.play("punch")
 	
-	if Input.is_action_just_pressed("award") and can_play_hands_anim():
+	if Input.is_action_just_pressed("award") and can_play_hands_anim() and hands_anim.current_animation != "awarding":
 		if is_instance_valid(interactor.cached):
-			if interactor.cached.owner is Citizen:
-				hands_anim.play("awarding")
-				#if interactor.cached.owner is Citizen.Class.Bad:
-					# bad, good, neutral?
-					#pass
+			if interactor.cached.owner is Citizen and GameManager.awards_left > 0:
+				if interactor.cached.owner not in awarded_citizens:
+					hands_anim.play("awarding")
+					awarded_citizens.append(interactor.cached.owner)
+					GameManager.awards_left -= 1
+					# TODO: correct?
 	
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

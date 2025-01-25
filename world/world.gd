@@ -8,7 +8,7 @@ var current_emoji_negative: bool
 
 ## Time
 var current_time: int = 0
-var starting_time: int = 15 ## TODO: change
+var starting_time: int = 60 ## TODO: change
 
 ## Day
 var current_day: int = 1
@@ -23,12 +23,6 @@ var max_misses: int = 3 ## If this reaches 0 -> the player loses
 
 ## Citizens
 var max_citizens: int = 15
-
-## Awards and punishes
-## TODO
-var awards_left: int = 3
-var current_punishes: int = 0
-var total_punishes: int = 0
 
 @onready var game_ui: GameUI = $GameUI
 
@@ -75,9 +69,10 @@ func create_citizens() -> void:
 		else:
 			citizen.citizen_class = citizen.Class.NEUTRAL
 		citizen.positive_opinion_forbidden = not current_emoji_negative
+		citizen.current_emoji = current_emoji
 		citizens.add_child(citizen)
 		citizen.global_position = child.global_position
-		citizen.rotate_y(randi_range(deg_to_rad(-50), deg_to_rad(50)))
+		citizen.rotate_y(randf_range(deg_to_rad(-50), deg_to_rad(50)))
 		spawned += 1
 		if spawned == max_citizens:
 			break
@@ -135,11 +130,14 @@ func prepare_next_day() -> void:
 	player.global_position = player_spawn.global_position
 	#player.look_at(player_spawn_direction.global_position)
 	current_time = starting_time
+	player.awarded_citizens.clear()
+	GameManager.awards_left = 3
 	game_ui.hide_labels()
 	game_ui.show_label_day(current_day)
 	game_ui.show_label_time(current_time)
 	game_ui.play_fade_out()
 	generate_task()
+
 
 func start_day() -> void:
 	GameManager.freeze = false
