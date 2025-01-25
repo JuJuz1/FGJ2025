@@ -1,6 +1,7 @@
 extends Node3D
 
 var player
+@export var neutral_emojis: Array[EmojiData] = []
 
 func _ready():
 	self.set_scale(Vector3(0.2, 0.2, 0.2))

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://ba2ma8bpdbml5"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_4tvkx"]
+[ext_resource type="Texture2D" uid="uid://hkwxk2x4571d" path="res://graphics/emojis/neutral/Watermelon.svg" id="2_yacjv"]
+
+[resource]
+script = ExtResource("1_4tvkx")
+string = "watermelons"
+svg = ExtResource("2_yacjv")
+metadata/_custom_type_script = ExtResource("1_4tvkx")

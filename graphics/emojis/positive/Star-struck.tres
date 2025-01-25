@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://dv8q7ihbgboqx"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_8l5wl"]
+[ext_resource type="Texture2D" uid="uid://yueewrwg5h1x" path="res://graphics/emojis/positive/Star-struck.svg" id="2_kw78w"]
+
+[resource]
+script = ExtResource("1_8l5wl")
+string = "Star-struck"
+svg = ExtResource("2_kw78w")
+metadata/_custom_type_script = ExtResource("1_8l5wl")

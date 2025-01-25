@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://cb6dnwve0dqnm"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_423gq"]
+[ext_resource type="Texture2D" uid="uid://txt7o5bynrce" path="res://graphics/emojis/neutral/recycling.svg" id="2_lfwej"]
+
+[resource]
+script = ExtResource("1_423gq")
+string = "recycling"
+svg = ExtResource("2_lfwej")
+metadata/_custom_type_script = ExtResource("1_423gq")

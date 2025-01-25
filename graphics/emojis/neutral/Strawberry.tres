@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://chirhvpisjsgq"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_focvk"]
+[ext_resource type="Texture2D" uid="uid://c6s02q5tp7mj0" path="res://graphics/emojis/neutral/Strawberry.svg" id="2_nxpgh"]
+
+[resource]
+script = ExtResource("1_focvk")
+string = "strawberries"
+svg = ExtResource("2_nxpgh")
+metadata/_custom_type_script = ExtResource("1_focvk")

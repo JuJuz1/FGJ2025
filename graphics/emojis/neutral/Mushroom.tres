@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://bosjp7170oi55"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_0qn5v"]
+[ext_resource type="Texture2D" uid="uid://sm5lu38tcdhk" path="res://graphics/emojis/neutral/Mushroom.svg" id="2_qkgj4"]
+
+[resource]
+script = ExtResource("1_0qn5v")
+string = "mushrooms"
+svg = ExtResource("2_qkgj4")
+metadata/_custom_type_script = ExtResource("1_0qn5v")

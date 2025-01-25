@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://iumwfvw1ugt6"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_527mo"]
+[ext_resource type="Texture2D" uid="uid://u6oc5h6vvtc8" path="res://graphics/emojis/neutral/Carrot.svg" id="2_o1k86"]
+
+[resource]
+script = ExtResource("1_527mo")
+string = "carrots"
+svg = ExtResource("2_o1k86")
+metadata/_custom_type_script = ExtResource("1_527mo")

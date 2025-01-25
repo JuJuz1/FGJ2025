@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://brgrenft5bltw"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_lhruf"]
+[ext_resource type="Texture2D" uid="uid://cl0466e7g5vx0" path="res://graphics/emojis/neutral/Banana.svg" id="2_ep1b7"]
+
+[resource]
+script = ExtResource("1_lhruf")
+string = "bananas"
+svg = ExtResource("2_ep1b7")
+metadata/_custom_type_script = ExtResource("1_lhruf")

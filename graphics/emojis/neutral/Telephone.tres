@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://dvqrvwt4wjhgl"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_6n1oy"]
+[ext_resource type="Texture2D" uid="uid://ctx636vvviqpq" path="res://graphics/emojis/neutral/Telephone.svg" id="2_3wejn"]
+
+[resource]
+script = ExtResource("1_6n1oy")
+string = "telephones"
+svg = ExtResource("2_3wejn")
+metadata/_custom_type_script = ExtResource("1_6n1oy")

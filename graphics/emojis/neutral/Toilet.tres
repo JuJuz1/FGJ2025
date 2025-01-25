@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://c2agrkcqiggig"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_hf6bg"]
+[ext_resource type="Texture2D" uid="uid://6oi3olxs26kj" path="res://graphics/emojis/neutral/Toilet.svg" id="2_276eg"]
+
+[resource]
+script = ExtResource("1_hf6bg")
+string = "toilets"
+svg = ExtResource("2_276eg")
+metadata/_custom_type_script = ExtResource("1_hf6bg")

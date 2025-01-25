@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://dw5wnawnbd2k3"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_v386d"]
+[ext_resource type="Texture2D" uid="uid://dkcq7bugoemyo" path="res://graphics/emojis/negative/Clown.svg" id="2_tf0qt"]
+
+[resource]
+script = ExtResource("1_v386d")
+string = "clown"
+svg = ExtResource("2_tf0qt")
+metadata/_custom_type_script = ExtResource("1_v386d")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://dv31511rexqmr"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_mk7ks"]
+[ext_resource type="Texture2D" uid="uid://dpj51fj2g4tmw" path="res://graphics/emojis/negative/Angry.svg" id="2_7wldn"]
+
+[resource]
+script = ExtResource("1_mk7ks")
+string = "angry"
+svg = ExtResource("2_7wldn")
+metadata/_custom_type_script = ExtResource("1_mk7ks")

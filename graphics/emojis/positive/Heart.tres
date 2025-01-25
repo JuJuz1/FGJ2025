@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://cmvqn2xoswxfl"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_uihcp"]
+[ext_resource type="Texture2D" uid="uid://bp3g7t5fuxynm" path="res://graphics/emojis/positive/Heart.svg" id="2_v0q54"]
+
+[resource]
+script = ExtResource("1_uihcp")
+string = "heart"
+svg = ExtResource("2_v0q54")
+metadata/_custom_type_script = ExtResource("1_uihcp")

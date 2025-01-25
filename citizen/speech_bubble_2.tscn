@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnxhueedyixpf"]
+
+[ext_resource type="Script" uid="uid://f8a7dtineye4" path="res://citizen/speech_bubble.gd" id="1_dv6tq"]
+[ext_resource type="Texture2D" uid="uid://bkf1ip87wlorg" path="res://graphics/textures/speech_bubble.png" id="2_jeotc"]
+[ext_resource type="Texture2D" uid="uid://dpj51fj2g4tmw" path="res://graphics/emojis/negative/Angry.svg" id="3_nnfvp"]
+[ext_resource type="Texture2D" uid="uid://b2mh17j332pg1" path="res://graphics/emojis/neutral/Gaming.svg" id="4_sf4ok"]
+
+[node name="SpeechBubble2" type="Node3D"]
+script = ExtResource("1_dv6tq")
+
+[node name="BG" type="Sprite3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.719, 0, 0, 0, 1, 0, 8.5, 0)
+sorting_offset = -1.0
+texture = ExtResource("2_jeotc")
+
+[node name="Emoji1" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 9, 0)
+texture = ExtResource("3_nnfvp")
+
+[node name="Emoji2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 9, 0)
+texture = ExtResource("4_sf4ok")

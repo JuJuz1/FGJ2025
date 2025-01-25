@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://crtwb8m4ocldw"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_5dukn"]
+[ext_resource type="Texture2D" uid="uid://bw4h1o137xjwy" path="res://graphics/emojis/neutral/Pirates.svg" id="2_pdirs"]
+
+[resource]
+script = ExtResource("1_5dukn")
+string = "pirates"
+svg = ExtResource("2_pdirs")
+metadata/_custom_type_script = ExtResource("1_5dukn")

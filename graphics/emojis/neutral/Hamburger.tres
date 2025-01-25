@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://d0t4cdvmaarhc"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_qjxo5"]
+[ext_resource type="Texture2D" uid="uid://d1wekv1obdnwg" path="res://graphics/emojis/neutral/Hamburger.svg" id="2_imv65"]
+
+[resource]
+script = ExtResource("1_qjxo5")
+string = "hamburgers"
+svg = ExtResource("2_imv65")
+metadata/_custom_type_script = ExtResource("1_qjxo5")

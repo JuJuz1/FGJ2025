@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EmojiData" load_steps=3 format=3 uid="uid://blw8pqsjo2oqr"]
+
+[ext_resource type="Script" uid="uid://dpeqpkmjd4ojq" path="res://graphics/emojis/emoji_data.gd" id="1_sg5a7"]
+[ext_resource type="Texture2D" uid="uid://db2fbi7hggyxk" path="res://graphics/emojis/neutral/Nuclear.svg" id="2_ja0a2"]
+
+[resource]
+script = ExtResource("1_sg5a7")
+string = "nuclear energy"
+svg = ExtResource("2_ja0a2")
+metadata/_custom_type_script = ExtResource("1_sg5a7")
