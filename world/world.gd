@@ -1,9 +1,14 @@
 extends Node3D
 
+@onready var game_ui: CanvasLayer = $GameUI
+
+@onready var player: Player = $Player
+@onready var player_spawn: Marker3D = $PlayerSpawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	game_ui.show_label_day()
+	player.global_position = player_spawn.global_position
 
 
 func _input(event: InputEvent) -> void:

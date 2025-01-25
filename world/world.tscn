@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=12 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
+[ext_resource type="Script" uid="uid://bpyt1pr2letnh" path="res://world/game_ui.gd" id="2_mmdvd"]
 [ext_resource type="PackedScene" uid="uid://cwda0i8nqukni" path="res://player/player.tscn" id="2_tcf2h"]
 [ext_resource type="PackedScene" uid="uid://q12kad4woxxt" path="res://citizen/citizen.tscn" id="3_4717r"]
+[ext_resource type="LabelSettings" uid="uid://cwd7v7t7ih3nq" path="res://ui/label_big.tres" id="3_fn3g3"]
 [ext_resource type="PackedScene" uid="uid://bgvcypy3uris4" path="res://world/lamp.tscn" id="4_h5o24"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
@@ -24,6 +26,62 @@ size = Vector3(20, 0.2, 20)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_6xmxd")
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+script = ExtResource("2_mmdvd")
+
+[node name="LabelDayCounter" type="Label" parent="GameUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -68.5
+offset_right = 134.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Day 1"
+label_settings = ExtResource("3_fn3g3")
+horizontal_alignment = 1
+
+[node name="LabelGameLose" type="Label" parent="GameUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.5
+offset_top = -68.5
+offset_right = 207.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You lost!"
+label_settings = ExtResource("3_fn3g3")
+horizontal_alignment = 1
+
+[node name="LabelGameWin" type="Label" parent="GameUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -667.0
+offset_top = -138.5
+offset_right = 667.0
+offset_bottom = 138.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You managed to fulfill your 
+job succesfully! You win!"
+label_settings = ExtResource("3_fn3g3")
+horizontal_alignment = 1
+
+[node name="TimerDay" type="Timer" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6xmxd")
@@ -60,3 +118,6 @@ transform = Transform3D(0.0199827, 0, 0.9998, 0, 1, 0, -0.9998, 0, 0.0199827, -1
 
 [node name="Lamp" parent="Lamps" instance=ExtResource("4_h5o24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.366, 0.2, -3.581)
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609182, 3.44479)
