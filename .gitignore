@@ -4,3 +4,5 @@
 .meta
 /android/
 .mat
+*.blend2
+*.blend3
