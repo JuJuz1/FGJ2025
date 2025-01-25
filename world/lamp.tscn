@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgvcypy3uris4"]
+[gd_scene load_steps=3 format=3 uid="uid://bgvcypy3uris4"]
 
 [ext_resource type="PackedScene" uid="uid://6r4d3cmuuecu" path="res://graphics/3d/lamp/lamp.blend" id="1_dagb5"]
 
-[node name="Lamp" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dagb5"]
+size = Vector3(0.2, 2.93018, 0.2)
+
+[node name="Lamp" type="StaticBody3D"]
 
 [node name="lamp" parent="." instance=ExtResource("1_dagb5")]
 
@@ -15,3 +18,7 @@ shadow_enabled = true
 shadow_caster_mask = 4294967294
 distance_fade_enabled = true
 omni_range = 7.04589
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32202, 0)
+shape = SubResource("BoxShape3D_dagb5")
