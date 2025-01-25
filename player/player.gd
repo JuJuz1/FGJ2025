@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @export_group("Movement stats")
 @export var speed: float = 4.5
@@ -19,12 +20,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		# Rotate the player character by y-axis (left and right)
 		rotate_y(deg_to_rad(-event.screen_relative.x * sensitivity))
-		# Rotates the camera holder around the x-axis (up and down).
+		# Rotates the camera holder around the x-axis (up and down)
 		camera_holder.rotate_x(deg_to_rad(-event.screen_relative.y * sensitivity))
-		# Clamp the rotation of the camera on the x-axis to prevent turning "over" the axis.
+		# Clamp the rotation of the camera on the x-axis to prevent turning "over" the axis
 		camera_holder.rotation.x = clampf(camera_holder.rotation.x, deg_to_rad(-87), deg_to_rad(87))
 
 
+# Movement handling
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,8 +36,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
@@ -48,6 +48,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
-	print(velocity.length())
+	#print("Velocity ", velocity.length())
 	
 	move_and_slide()

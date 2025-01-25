@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=9 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="PackedScene" uid="uid://cwda0i8nqukni" path="res://player/player.tscn" id="2_tcf2h"]
+[ext_resource type="PackedScene" uid="uid://chkhwg774d8rf" path="res://citizen/citizen.tscn" id="3_4717r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
 
@@ -38,3 +39,6 @@ mesh = SubResource("BoxMesh_6xmxd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_tcf2h")
+
+[node name="Citizen" parent="." instance=ExtResource("3_4717r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60802, -6.52416)
