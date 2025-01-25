@@ -2,7 +2,7 @@ extends Node3D
 
 ## Time
 var current_time: int = 0
-var starting_time: int = 7 ## TODO: change
+var starting_time: int = 60 ## TODO: change
 
 ## Day
 var current_day: int = 1

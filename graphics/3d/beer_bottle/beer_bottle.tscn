@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://darjgqd45idgw"]
+
+[ext_resource type="PackedScene" uid="uid://dkxygym2lmd4e" path="res://graphics/3d/beer_bottle/beer_bottle.blend" id="1_q1p0l"]
+
+[node name="beer_bottle" instance=ExtResource("1_q1p0l")]

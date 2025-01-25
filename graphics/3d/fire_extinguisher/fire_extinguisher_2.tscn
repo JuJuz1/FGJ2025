@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dylkt1kio6tdk"]
+
+[ext_resource type="PackedScene" uid="uid://ctycoy0ng5h73" path="res://graphics/3d/fire_extinguisher/fire_extinguisher.blend" id="1_15ba6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4atb"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="fire_extinguisher2" instance=ExtResource("1_15ba6")]
+
+[node name="fire_extinguisher" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_p4atb")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh5rtc1qckhyc"]
+
+[ext_resource type="PackedScene" uid="uid://dflo8tjwuysm1" path="res://graphics/3d/house1/house1.blend" id="1_6mvx4"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qyv10"]
+data = PackedVector3Array(0.5, 36, -10, -0.5, 36, 10, -0.5, 36, -10, 0.5, 36, -10, 0.5, 36, 10, -0.5, 36, 10, 0.5, 0, 10, -0.5, 36, 10, 0.5, 36, 10, 0.5, 0, 10, -0.5, 0, 10, -0.5, 36, 10, -0.5, 0, 10, -0.5, 36, -10, -0.5, 36, 10, -0.5, 0, 10, -0.5, 0, -10, -0.5, 36, -10, -0.5, 0, -10, 0.5, 0, 10, 0.5, 0, -10, -0.5, 0, -10, -0.5, 0, 10, 0.5, 0, 10, 0.5, 0, -10, 0.5, 36, 10, 0.5, 36, -10, 0.5, 0, -10, 0.5, 0, 10, 0.5, 36, 10, -0.5, 0, -10, 0.5, 36, -10, -0.5, 36, -10, -0.5, 0, -10, 0.5, 0, -10, 0.5, 36, -10)
+
+[node name="house1" instance=ExtResource("1_6mvx4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="house" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="house/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_qyv10")
