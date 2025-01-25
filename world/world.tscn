@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
-[ext_resource type="Script" path="res://world/game_ui.gd" id="2_mmdvd"]
+[ext_resource type="Script" uid="uid://bpyt1pr2letnh" path="res://world/game_ui.gd" id="2_mmdvd"]
 [ext_resource type="PackedScene" uid="uid://cwda0i8nqukni" path="res://player/player.tscn" id="2_tcf2h"]
 [ext_resource type="PackedScene" uid="uid://q12kad4woxxt" path="res://citizen/citizen.tscn" id="3_4717r"]
 [ext_resource type="LabelSettings" uid="uid://cwd7v7t7ih3nq" path="res://ui/label_big.tres" id="3_fn3g3"]
@@ -98,6 +98,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Time"
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameUI"]
+
+[node name="ColorRect" type="ColorRect" parent="GameUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="TimerDay" type="Timer" parent="."]
 autostart = true

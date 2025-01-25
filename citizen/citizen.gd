@@ -26,7 +26,7 @@ func update_health_label() -> void:
 
 func take_damage(amount: int) -> void:
 	# TODO: show visually, logic
-	current_health = clampi(current_health, 0, max_health)
+	current_health = clampi(current_health - amount, 0, max_health)
 	update_health_label()
 
 

@@ -5,7 +5,7 @@ var current_time: int = 0
 var starting_time: int = 10 ## TODO: change
 
 ## Day
-var current_day: int = 0
+var current_day: int = 1
 var max_days: int = 5
 
 ## Wage
@@ -24,9 +24,10 @@ var max_misses: int = 3 ## If this reaches 0 -> the player loses
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	game_ui.show_label_day()
-	player.global_position = player_spawn.global_position
 	current_time = starting_time
+	player.global_position = player_spawn.global_position
+	game_ui.show_label_day(current_day)
+	game_ui.show_label_time(current_time)
 
 
 func _input(event: InputEvent) -> void:
@@ -73,6 +74,10 @@ func end_day() -> void:
 func game_end():
 	# TODO:
 	pass
+
+
+func _on_game_ui_timer_start() -> void:
+	timer_day.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
