@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chkhwg774d8rf"]
+[gd_scene load_steps=6 format=3 uid="uid://q12kad4woxxt"]
 
 [ext_resource type="Script" uid="uid://ceagkbqps66pg" path="res://citizen/citizen.gd" id="1_3aquc"]
 [ext_resource type="PackedScene" uid="uid://6wk0j4mjmc3x" path="res://common/interaction/interactable.tscn" id="2_noc4a"]
@@ -11,25 +11,28 @@ radius = 0.4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihwdb"]
 height = 2.14088
 
-[node name="Citizen" type="Node3D"]
+[node name="Citizen" type="CharacterBody3D"]
 script = ExtResource("1_3aquc")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_noc4a")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_noc4a")
 
-[node name="Interactable" parent="CharacterBody3D" instance=ExtResource("2_noc4a")]
+[node name="Interactable" parent="." instance=ExtResource("2_noc4a")]
 
-[node name="CollisionShape3D" parent="CharacterBody3D/Interactable" index="0"]
+[node name="CollisionShape3D" parent="Interactable" index="0"]
 shape = SubResource("CapsuleShape3D_ihwdb")
 
-[connection signal="focused" from="CharacterBody3D/Interactable" to="." method="_on_interactable_focused"]
-[connection signal="interacted" from="CharacterBody3D/Interactable" to="." method="_on_interactable_interacted"]
-[connection signal="unfocused" from="CharacterBody3D/Interactable" to="." method="_on_interactable_unfocused"]
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21304, 0)
+billboard = 2
+text = "Citizen"
 
-[editable path="CharacterBody3D/Interactable"]
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="Interactable"]

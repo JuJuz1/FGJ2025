@@ -1,10 +1,9 @@
-extends Node3D
+extends CharacterBody3D
 class_name Citizen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 func _on_interactable_focused(interactor: Interactor) -> void:
 	# TODO: outline shader
@@ -20,6 +19,10 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 	print_debug("Unfocused ", interactor.owner.name)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * GameManager.gravity_modifier * delta
+	else:
+		velocity = Vector3.ZERO
+	
+	move_and_slide()

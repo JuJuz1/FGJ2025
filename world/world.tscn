@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="PackedScene" uid="uid://cwda0i8nqukni" path="res://player/player.tscn" id="2_tcf2h"]
-[ext_resource type="PackedScene" uid="uid://chkhwg774d8rf" path="res://citizen/citizen.tscn" id="3_4717r"]
+[ext_resource type="PackedScene" uid="uid://q12kad4woxxt" path="res://citizen/citizen.tscn" id="3_4717r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
 

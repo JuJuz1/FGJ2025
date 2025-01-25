@@ -6,7 +6,6 @@ class_name Player
 @export var sprint_speed: float = 7.0
 @export var acceleration: float = 3.0
 @export var jump_velocity: float = 5.0
-@export var gravity_modifier: float = 1.25
 @export_group("Mouse sensitivity")
 @export var sensitivity: float = 4.0 / 100
 
@@ -30,7 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * gravity_modifier * delta
+		# TODO: maybe just change project gravity
+		velocity += get_gravity() * GameManager.gravity_modifier * delta
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
