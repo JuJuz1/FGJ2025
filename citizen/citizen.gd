@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, 0, 5.0 * delta)
 	velocity.z = move_toward(velocity.z, 0, 5.0 * delta)
 	if not is_on_floor():
-		velocity += get_gravity() * GameManager.gravity_modifier * delta
+		velocity += get_gravity() * delta
 	
 	move_and_slide()
 

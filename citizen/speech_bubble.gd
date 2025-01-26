@@ -1,12 +1,12 @@
 extends Node3D
 
-var player
-var children
-const DESPAWN_DELAY = 15  # How many seconds before speech bubble disappears
+@export var all_emojis: EmojiDataArrays
 
 @onready var despawn_timer: Timer = $DespawnTimer
 
-@export var all_emojis: EmojiDataArrays
+var player: Player
+var children: Array
+const DESPAWN_DELAY: int = 15  # How many seconds before speech bubble disappears
 
 func _ready():
 	self.set_scale(Vector3(0, 0, 0))
@@ -14,11 +14,6 @@ func _ready():
 	player = get_node("/root/World/Player")
 	children = self.get_children()
 	despawn_timer.wait_time = DESPAWN_DELAY
-
-
-func _process(_delta):
-	var position = player.position
-	self.look_at(position, Vector3.UP, true)
 
 
 func get_random_neutral_emoji() -> EmojiData:
@@ -32,8 +27,10 @@ func get_random_neutral_emoji_except(emoji: EmojiData):
 			break
 	return rand_emoji
 
+
 func get_random_negative_emoji()-> EmojiData:
 	return all_emojis.negative_emoji_array[randi() % 9]
+
 
 func get_random_positive_emoji()-> EmojiData:
 	return all_emojis.positive_emoji_array[randi() % 9]
@@ -136,7 +133,6 @@ func appear():
 
 
 func _on_despawn_timer_timeout():
-	var children: Array = self.get_children()
 	var sprites: Array
 	for child in children:
 		if child is Sprite3D:
@@ -149,3 +145,8 @@ func _on_despawn_timer_timeout():
 	await get_tree().create_timer(4, false).timeout
 	#tween.tween_callback(func(): queue_free())
 	queue_free()
+
+
+func _process(_delta):
+	var player_pos: Vector3 = player.position
+	self.look_at(player_pos, Vector3.UP, true)

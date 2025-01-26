@@ -14,6 +14,9 @@ class_name Player
 const SENSITIVTY_DIVIDER: int = 100
 
 signal awarded(negative: bool)
+signal spawn_baton_hit_audio(audio: AudioStreamPlayer3D, position: Vector3)
+
+const BATON_HIT = preload("res://player/baton_hit.tscn")
 
 @onready var camera_holder: Node3D = $CameraHolder
 @onready var interactor: Interactor = $CameraHolder/Interactor
@@ -22,8 +25,12 @@ signal awarded(negative: bool)
 
 @onready var label_fps: Label = $LabelFPS
 
+@onready var audio_attack: AudioStreamPlayer3D = $AudioAttack
+@onready var timer_audio_attack: Timer = $TimerAudioAttack
+
 var latest_damaged_body: Citizen
 var awarded_citizens: Array[Citizen] = []
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -53,11 +60,16 @@ func _on_area_3d_baton_body_entered(body: Node3D) -> void:
 	if body is Citizen and body != latest_damaged_body and not can_play_hands_anim():
 		latest_damaged_body = body
 		body.take_damage(baton_damage, global_position.direction_to(body.global_position))
+		spawn_baton_hit_audio.emit(BATON_HIT, body.global_position)
 
 
 func _on_area_3d_baton_body_exited(body: Node3D) -> void:
 	if body is Citizen:
 		pass
+
+
+func _on_timer_audio_attack_timeout() -> void:
+	audio_attack.play()
 
 
 # Movement handling
@@ -75,6 +87,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack") and can_play_hands_anim():
 		hands_anim.play("punch")
+		timer_audio_attack.start()
 	
 	if Input.is_action_just_pressed("award") and can_play_hands_anim() and hands_anim.current_animation != "awarding":
 		if is_instance_valid(interactor.cached):
@@ -94,10 +107,11 @@ func _physics_process(delta: float) -> void:
 	
 	if direction:
 		if can_play_hands_anim():
-			if sprinting:
-				hands_anim.play("run", -1, 1.5)
-			else:
-				hands_anim.play("run")
+			if hands_anim.current_animation != "awarding":
+				if sprinting:
+					hands_anim.play("run", -1, 1.5)
+				else:
+					hands_anim.play("run")
 		#if Input.is_action_just_pressed("sprint"):
 		velocity.x = direction.x * actual_speed
 		velocity.z = direction.z * actual_speed
@@ -110,5 +124,12 @@ func _physics_process(delta: float) -> void:
 	
 	#print("Velocity ", velocity.length())
 	label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
+	
+	# Small cooldown to moving when awarding
+	if hands_anim.current_animation == "awarding":
+		var length: float = hands_anim.current_animation_length - hands_anim.current_animation_position
+		#print(length)
+		if 1.2 < length:
+			return
 	
 	move_and_slide()

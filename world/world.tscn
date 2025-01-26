@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bgvcypy3uris4" path="res://graphics/3d/lamp/lamp.tscn" id="4_h5o24"]
 [ext_resource type="LabelSettings" uid="uid://px7soueq4ux4" path="res://ui/label_medium.tres" id="5_llyeo"]
 [ext_resource type="AudioStream" uid="uid://c5qxvqqdg5bn4" path="res://sounds/Driller_Night_Original_Song_by_R-R-Slugger.wav" id="6_0pnie"]
-[ext_resource type="PackedScene" path="res://graphics/3d/tapola_kiosk/tapola_kiosk.tscn" id="8_ai45w"]
+[ext_resource type="PackedScene" uid="uid://c22bs3vi7w8ly" path="res://graphics/3d/tapola_kiosk/tapola_kiosk.tscn" id="8_ai45w"]
 [ext_resource type="PackedScene" uid="uid://c4rb3lcjvgfw1" path="res://graphics/3d/newspaper/newspaper.blend" id="8_ysn08"]
 [ext_resource type="Texture2D" uid="uid://ddihs0sjogbew" path="res://graphics/textures/121_street paving cobblestone texture-seamless.jpg" id="9_4papg"]
-[ext_resource type="PackedScene" path="res://graphics/3d/dictator_statue/dictator_statue.tscn" id="11_mad0u"]
+[ext_resource type="PackedScene" uid="uid://daqxcvxcklayc" path="res://graphics/3d/dictator_statue/dictator_statue.tscn" id="11_mad0u"]
 [ext_resource type="PackedScene" uid="uid://wsjye3f4h3ln" path="res://graphics/3d/grasspool/grasspool_2.tscn" id="12_ocfjn"]
-[ext_resource type="PackedScene" path="res://graphics/3d/house1/house_1.tscn" id="13_dqqhb"]
+[ext_resource type="PackedScene" uid="uid://dh5rtc1qckhyc" path="res://graphics/3d/house1/house_1.tscn" id="13_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://6fysjhehmsf4" path="res://graphics/3d/house2/house2.blend" id="14_h8lre"]
 [ext_resource type="PackedScene" uid="uid://b6boowli3w4bn" path="res://graphics/3d/house3/house3.blend" id="15_ysn08"]
 [ext_resource type="PackedScene" uid="uid://dliiyxt2p1pk3" path="res://graphics/3d/round_kiosk/round_kiosk_2.tscn" id="16_h8lre"]
@@ -268,6 +268,7 @@ color = Color(0, 0, 0, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0pnie")
+volume_db = -2.0
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -275,8 +276,8 @@ environment = SubResource("Environment_6xmxd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0555601, -0.998455, 5.08498e-08, 0.283827, 0.0157939, 0.958746, -0.957265, -0.053268, 0.284266, 0.0129623, -0.0267296, 0.0289888)
-light_color = Color(0.625597, 0.625597, 0.625597, 1)
-light_energy = 1.11
+light_color = Color(0.306415, 0.471215, 0.564097, 1)
+light_energy = 1.4
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_tcf2h")]
@@ -284,10 +285,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90225, 0)
 collision_layer = 2
 
 [node name="PlayerSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70882, 15.4448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62261, 15.4448)
 
 [node name="PlayerSpawnDirection" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70882, 14.1458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62261, 14.1458)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -304,85 +305,97 @@ skeleton = NodePath("../..")
 [node name="SpawnPoints" type="Node3D" parent="Citizens"]
 
 [node name="Marker3D" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14968, 51.9899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60951, 51.9899)
 
 [node name="Marker3D2" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26819, 1.14968, 55.2939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26819, 1.60951, 55.2939)
 
 [node name="Marker3D3" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79586, 1.14968, 53.3959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79586, 1.60951, 53.3959)
+
+[node name="Marker3D37" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9644, 3.91074, 48.08)
+
+[node name="Marker3D38" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2973, 3.4822, 47.8998)
+
+[node name="Marker3D39" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8613, 3.4822, 48.8782)
 
 [node name="Marker3D4" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6098, 1.14968, 53.3959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6098, 1.60951, 53.3959)
 
 [node name="Marker3D5" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.831, 1.14968, 52.1074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.831, 1.60951, 52.1074)
 
 [node name="Marker3D6" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.831, 1.14968, 60.1582)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.831, 1.60951, 60.1582)
 
 [node name="Marker3D7" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2415, 1.14968, 61.8531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2415, 1.60951, 61.8531)
 
 [node name="Marker3D8" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2415, 1.14968, 54.3716)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2415, 1.60951, 54.3716)
 
 [node name="Marker3D9" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6572, 1.14968, 14.7794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6572, 1.60951, 14.7794)
 
 [node name="Marker3D10" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6572, 1.14968, 13.0729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1606, 1.60951, 13.0729)
 
 [node name="Marker3D11" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.914, 1.14968, 11.8594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.914, 1.60951, 11.8594)
 
 [node name="Marker3D12" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.914, 1.14968, 13.7055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4152, 1.60951, 13.7055)
 
 [node name="Marker3D13" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0026, 1.14968, 6.10278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0026, 1.60951, 6.10278)
 
 [node name="Marker3D14" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0026, 1.14968, 4.39273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0026, 1.60951, 4.39273)
 
 [node name="Marker3D15" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7357, 1.14968, 2.25911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7357, 1.60951, 2.25911)
 
 [node name="Marker3D16" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7357, 1.14968, 2.25911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2069, 1.60951, 2.25911)
 
 [node name="Marker3D17" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6366, 1.14968, 3.32591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5041, 1.60951, 3.32591)
 
 [node name="Marker3D18" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34624, 1.14968, -17.1432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34624, 1.96589, -17.1432)
 
 [node name="Marker3D19" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07284, 1.14968, -17.1432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8422, 1.86686, -17.1432)
 
 [node name="Marker3D20" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66559, 1.14968, -15.5349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66559, 1.14968, -15.1348)
 
 [node name="Marker3D21" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1308, 1.14968, -17.199)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1308, 1.59739, -17.0716)
 
 [node name="Marker3D22" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75876, 1.14968, -17.199)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75876, 1.34776, -16.7992)
+
+[node name="Marker3D36" type="Marker3D" parent="Citizens/SpawnPoints"]
+transform = Transform3D(0.904075, 0, -0.427374, 0, 1, 0, 0.427374, 0, 0.904075, 5.93446, 1.34776, -14.9537)
 
 [node name="Marker3D23" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86705, 1.14968, -17.6084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86705, 1.49471, -17.6084)
 
 [node name="Marker3D24" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52633, 4.00996, -19.943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71922, 1.14672, -16.075)
 
 [node name="Marker3D25" type="Marker3D" parent="Citizens/SpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52633, 4.00996, -19.943)
 
 [node name="Marker3D26" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2479, 1.22557, -17.5364)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.54454, 1.67328, -17.5364)
 
 [node name="Marker3D27" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 12.2788, 1.22557, -17.5364)
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 12.2788, 1.67328, -17.5364)
 
 [node name="Marker3D28" type="Marker3D" parent="Citizens/SpawnPoints"]
 transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 45.5441, 1.22557, -11.0261)
@@ -400,13 +413,13 @@ transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 
 transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 49.133, 1.22557, -1.50717)
 
 [node name="Marker3D33" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 47.0718, 1.22557, -1.50717)
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 47.8385, 1.22557, -1.50717)
 
 [node name="Marker3D34" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 48.0664, 1.22557, -2.24847)
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 48.0664, 1.22557, -2.7033)
 
 [node name="Marker3D35" type="Marker3D" parent="Citizens/SpawnPoints"]
-transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 48.0664, 1.22557, -2.24847)
+transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 47.0909, 1.22557, 0.930282)
 
 [node name="Lamps" type="Node3D" parent="."]
 
@@ -609,8 +622,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.002
 [node name="round_kiosk2" parent="Kiosks" instance=ExtResource("16_h8lre")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 16.1103, 0.593034, 5.22931)
 
+[node name="round_kiosk3" parent="Kiosks" instance=ExtResource("16_h8lre")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 16.1103, 0.593034, 14.7269)
+
 [node name="tapola_kiosk" parent="Kiosks" instance=ExtResource("8_ai45w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25.6541, 1.74279, 2.57489)
+
+[node name="tapola_kiosk2" parent="Kiosks" instance=ExtResource("8_ai45w")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 3.3732, 1.74279, 64.7648)
 
 [node name="Tents" type="Node3D" parent="."]
 
@@ -665,153 +684,156 @@ transform = Transform3D(-3.98485, 0, -0.347788, 0, 4, 0, 0.347788, 0, -3.98485, 
 [node name="speaker_booth" parent="." instance=ExtResource("22_o1net")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 27.8805, 0.729826, 47.5287)
 
-[node name="outdoor_chair" parent="." instance=ExtResource("23_3ljsx")]
+[node name="OutdoorChairs" type="Node3D" parent="."]
+
+[node name="outdoor_chair" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.12, 0.407682, 40.6037)
 
-[node name="outdoor_chair2" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair2" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.1505, 0.407682, 40.6037)
 
-[node name="outdoor_chair3" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair3" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.6917, 0.407682, 40.6037)
 
-[node name="outdoor_chair4" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair4" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.7222, 0.407682, 40.6037)
 
-[node name="outdoor_chair5" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair5" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 29.4121, 0.407682, 40.6037)
 
-[node name="outdoor_chair6" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair6" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 31.4426, 0.407682, 40.6037)
 
-[node name="outdoor_chair7" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair7" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 33.9837, 0.407682, 40.6037)
 
-[node name="outdoor_chair8" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair8" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.0143, 0.407682, 40.6037)
 
-[node name="outdoor_chair9" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair9" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.12, 0.407682, 37.4903)
 
-[node name="outdoor_chair10" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair10" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.1505, 0.407682, 37.4903)
 
-[node name="outdoor_chair11" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair11" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.6917, 0.407682, 37.4903)
 
-[node name="outdoor_chair12" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair12" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.7222, 0.407682, 37.4903)
 
-[node name="outdoor_chair13" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair13" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 29.4121, 0.407682, 37.4903)
 
-[node name="outdoor_chair14" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair14" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 31.4426, 0.407682, 37.4903)
 
-[node name="outdoor_chair15" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair15" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 33.9837, 0.407682, 37.4903)
 
-[node name="outdoor_chair16" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair16" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.0143, 0.407682, 37.4903)
 
-[node name="outdoor_chair17" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair17" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.12, 0.407682, 33.2002)
 
-[node name="outdoor_chair18" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair18" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.1505, 0.407682, 33.2002)
 
-[node name="outdoor_chair19" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair19" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.6917, 0.407682, 33.2002)
 
-[node name="outdoor_chair20" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair20" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.7222, 0.407682, 33.2002)
 
-[node name="outdoor_chair21" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair21" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 29.4121, 0.407682, 33.2002)
 
-[node name="outdoor_chair22" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair22" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 31.4426, 0.407682, 33.2002)
 
-[node name="outdoor_chair23" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair23" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 33.9837, 0.407682, 33.2002)
 
-[node name="outdoor_chair24" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair24" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.0143, 0.407682, 33.2002)
 
-[node name="outdoor_chair25" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair25" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.12, 0.407682, 28.0568)
 
-[node name="outdoor_chair26" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair26" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.1505, 0.407682, 28.0568)
 
-[node name="outdoor_chair27" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair27" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.6917, 0.407682, 28.0568)
 
-[node name="outdoor_chair28" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair28" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.7222, 0.407682, 28.0568)
 
-[node name="outdoor_chair29" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair29" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 29.4121, 0.407682, 28.0568)
 
-[node name="outdoor_chair30" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair30" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 31.4426, 0.407682, 28.0568)
 
-[node name="outdoor_chair31" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair31" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 33.9837, 0.407682, 28.0568)
 
-[node name="outdoor_chair32" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair32" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.0143, 0.407682, 28.0568)
 
-[node name="outdoor_chair33" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair33" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.12, 0.407682, 23.3813)
 
-[node name="outdoor_chair34" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair34" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.1505, 0.407682, 23.3813)
 
-[node name="outdoor_chair35" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair35" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.6917, 0.407682, 23.3813)
 
-[node name="outdoor_chair36" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair36" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.7222, 0.407682, 23.3813)
 
-[node name="outdoor_chair37" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair37" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 29.4121, 0.407682, 23.3813)
 
-[node name="outdoor_chair38" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair38" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 31.4426, 0.407682, 23.3813)
 
-[node name="outdoor_chair39" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair39" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 33.9837, 0.407682, 23.3813)
 
-[node name="outdoor_chair40" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair40" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.0143, 0.407682, 23.3813)
 
-[node name="outdoor_table" parent="." instance=ExtResource("24_gi7ib")]
+[node name="outdoor_table" parent="OutdoorChairs" instance=ExtResource("24_gi7ib")]
 transform = Transform3D(0.607778, 0, -0.794107, 0, 1, 0, 0.794107, 0, 0.607778, -10.7775, 0.69367, 56.4784)
 
-[node name="outdoor_table2" parent="." instance=ExtResource("24_gi7ib")]
+[node name="outdoor_table2" parent="OutdoorChairs" instance=ExtResource("24_gi7ib")]
 transform = Transform3D(0.748065, 0, 0.663626, 0, 1, 0, -0.663626, 0, 0.748065, -15.4989, 0.69367, 55.9894)
 
-[node name="outdoor_table3" parent="." instance=ExtResource("24_gi7ib")]
+[node name="outdoor_table3" parent="OutdoorChairs" instance=ExtResource("24_gi7ib")]
 transform = Transform3D(0.838366, 0, -0.545107, 0, 1, 0, 0.545107, 0, 0.838366, -12.7871, 0.69367, 53.7812)
 
-[node name="outdoor_chair41" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair41" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(-4.83576, 0, 1.27098, 0, 5, 0, -1.27098, 0, -4.83576, -16.115, 0.40767, 58.689)
 
-[node name="outdoor_chair42" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair42" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(2.93016, 0, 4.05144, 0, 5, 0, -4.05144, 0, 2.93016, -16.115, 0.40767, 53.3105)
 
-[node name="outdoor_chair43" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair43" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(4.90223, 0, -0.983924, 0, 5, 0, 0.983924, 0, 4.90223, -14.0845, 0.40767, 51.3874)
 
-[node name="outdoor_chair44" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair44" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(-4.91917, 0, 0.895385, 0, 5, 0, -0.895385, 0, -4.91917, -11.5434, 0.40767, 58.4838)
 
-[node name="outdoor_chair45" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair45" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(3.52874, 0, -3.54232, 0, 5, 0, 3.54232, 0, 3.52874, -12.0924, 0.40767, 52.0425)
 
-[node name="outdoor_chair46" parent="." instance=ExtResource("23_3ljsx")]
+[node name="outdoor_chair46" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(3.91255, 0, -3.11319, 0, 5, 0, 3.11319, 0, 3.91255, -10.3093, 0.40767, 53.7559)
 
 [connection signal="timer_start" from="GameUI" to="." method="_on_game_ui_timer_start"]
 [connection signal="timeout" from="TimerDay" to="." method="_on_timer_day_timeout"]
 [connection signal="awarded" from="Player" to="." method="_on_player_awarded"]
+[connection signal="spawn_baton_hit_audio" from="Player" to="." method="_on_player_spawn_baton_hit_audio"]

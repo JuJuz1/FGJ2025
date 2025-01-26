@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://l2rm5fs7lmd2"]
+
+[ext_resource type="AudioStream" uid="uid://b5v8t76d8strw" path="res://sounds/pamppu_osuu_npc.wav" id="1_2u07m"]
+[ext_resource type="Script" uid="uid://dckpr33diusye" path="res://player/baton_hit.gd" id="1_l4i05"]
+
+[node name="BatonHit" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_2u07m")
+script = ExtResource("1_l4i05")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -15,7 +15,9 @@ var current_day: int = 1
 var max_days: int = 5
 
 ## Citizens
-var max_citizens: int = 15
+var good_citizens_amount: int = 5
+var bad_citizens_amount: int = 5
+var max_citizens: int = 25
 
 @onready var game_ui: GameUI = $GameUI
 
@@ -50,26 +52,30 @@ func create_citizens() -> void:
 			child.queue_free()
 	
 	var spawnpoints: Array = spawn_points.get_children()
-	spawnpoints.shuffle()
-	var spawned: int = 0
-	var bad_citizens: int = 3
-	var good_citizens: int = 3
+	var spawn_coords: Array[Vector3]
+	for spawnpoint: Marker3D in spawnpoints:
+		spawn_coords.append(spawnpoint.global_position)
+	spawn_coords.shuffle()
 	
-	for child: Marker3D in spawnpoints:
+	var spawned: int = 0
+	var bad_citizens_left: int = bad_citizens_amount
+	var good_citizens_left: int = good_citizens_amount
+	
+	for coordinate: Vector3 in spawn_coords:
 		var citizen: Citizen = CITIZEN.instantiate()
-		if 0 < bad_citizens:
+		if 0 < bad_citizens_left:
 			citizen.citizen_class = citizen.Class.BAD
-			bad_citizens -= 1
-		elif 0 < good_citizens:
+			bad_citizens_left -= 1
+		elif 0 < good_citizens_left:
 			citizen.citizen_class = citizen.Class.GOOD
-			good_citizens -= 1
+			good_citizens_left -= 1
 		else:
 			citizen.citizen_class = citizen.Class.NEUTRAL
 		citizen.positive_opinion_forbidden = not current_emoji_negative
 		citizen.current_emoji = current_emoji
 		citizen.damage_taken.connect(_on_citizen_damage_taken.bind())
 		citizens.add_child(citizen)
-		citizen.global_position = child.global_position
+		citizen.global_position = coordinate
 		citizen.rotate_y(randf_range(deg_to_rad(-50), deg_to_rad(50)))
 		spawned += 1
 		if spawned == max_citizens:
@@ -163,6 +169,12 @@ func _on_citizen_damage_taken(negative_opinion: bool) -> void:
 	if success:
 		GameManager.correct_punishes += 1
 		GameManager.current_wage += GameManager.punish_wage_amount
+
+
+func _on_player_spawn_baton_hit_audio(audio_scene: PackedScene, hit_position: Vector3) -> void:
+	var audio_hit: AudioStreamPlayer3D = audio_scene.instantiate()
+	add_child(audio_hit)
+	audio_hit.global_position = hit_position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

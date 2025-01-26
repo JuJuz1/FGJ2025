@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwda0i8nqukni"]
+[gd_scene load_steps=8 format=3 uid="uid://cwda0i8nqukni"]
 
 [ext_resource type="Script" uid="uid://dkg5jsm0p6sxm" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://cytkggu8r0k17" path="res://player/interactor.tscn" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://bv3s3ql5ed30y" path="res://graphics/3d/hands/hands.blend" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://cx46euobpvx4g" path="res://sounds/pampun_huitaisu.wav" id="4_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g1dw6"]
 radius = 0.197035
@@ -33,8 +34,7 @@ transform = Transform3D(0.7, -1.05697e-07, -1.20797e-07, -1.05697e-07, -0.7, -5.
 bones/1/rotation = Quaternion(0.497394, 0.502599, 0.500588, -0.499405)
 bones/2/rotation = Quaternion(-9.07459e-06, -2.33732e-09, -0.704845, 0.709361)
 bones/4/rotation = Quaternion(0, 0, 0.707107, 0.707107)
-bones/5/position = Vector3(-0.448666, 1.06977, 1.38243)
-bones/5/rotation = Quaternion(-0.431479, 0.498201, -0.492367, 0.568504)
+bones/5/rotation = Quaternion(0, 0, 0.707107, 0.707107)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="hands/Armature/Skeleton3D" index="0"]
 transform = Transform3D(-0.999992, -1.19125e-07, -0.00400962, -0.00400962, -1.13222e-07, 0.999992, -1.4964e-07, 1, 1.15641e-07, 1.00095, 0.00402634, 0.00639349)
@@ -73,8 +73,16 @@ grow_horizontal = 0
 grow_vertical = 0
 horizontal_alignment = 1
 
+[node name="AudioAttack" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_yw30f")
+
+[node name="TimerAudioAttack" type="Timer" parent="."]
+wait_time = 0.625
+one_shot = true
+
 [connection signal="body_entered" from="hands/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="." method="_on_area_3d_baton_body_entered"]
 [connection signal="body_exited" from="hands/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="." method="_on_area_3d_baton_body_exited"]
 [connection signal="animation_finished" from="hands/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="TimerAudioAttack" to="." method="_on_timer_audio_attack_timeout"]
 
 [editable path="hands"]

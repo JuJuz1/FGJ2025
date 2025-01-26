@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://bqfkxywap7mlj" path="res://sounds/npc_damage_4.wav" id="7_8bbin"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noc4a"]
+radius = 0.576711
+height = 1.91255
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihwdb"]
 radius = 0.583367
@@ -32,6 +34,7 @@ script = ExtResource("1_3aquc")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.166389, 0)
 shape = SubResource("CapsuleShape3D_noc4a")
 
 [node name="LabelHealth" type="Label3D" parent="."]
