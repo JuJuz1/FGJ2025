@@ -67,6 +67,7 @@ func create_citizens() -> void:
 			citizen.citizen_class = citizen.Class.NEUTRAL
 		citizen.positive_opinion_forbidden = not current_emoji_negative
 		citizen.current_emoji = current_emoji
+		citizen.damage_taken.connect(_on_citizen_damage_taken.bind())
 		citizens.add_child(citizen)
 		citizen.global_position = child.global_position
 		citizen.rotate_y(randf_range(deg_to_rad(-50), deg_to_rad(50)))
@@ -101,19 +102,6 @@ func _on_timer_day_timeout() -> void:
 		change_day()
 
 
-## Handle wage logic and start new day
-func end_day() -> void:
-	# Pause game and show the results of the day
-	if GameManager.current_wage < GameManager.wage_threshhold:
-		GameManager.missed_wage_thresholds += 1
-		if GameManager.missed_wage_thresholds == GameManager.max_misses:
-			game_end()
-	
-	GameManager.total_wage += GameManager.current_wage
-	GameManager.current_wage = 0
-	change_day()
-
-
 ## Change day
 func change_day() -> void:
 	current_day += 1
@@ -124,6 +112,14 @@ func change_day() -> void:
 
 
 func prepare_next_day() -> void:
+	if GameManager.current_wage < GameManager.wage_threshhold:
+		GameManager.missed_wage_thresholds += 1
+		if GameManager.missed_wage_thresholds == GameManager.max_misses:
+			game_end()
+	
+	GameManager.total_wage += GameManager.current_wage
+	GameManager.current_wage = 0
+	
 	player.global_position = player_spawn.global_position
 	player.look_at(player_spawn_direction.global_position)
 	current_time = starting_time
@@ -146,12 +142,27 @@ func game_end():
 	# TODO: win or lose
 	game_ui.show_label_lose()
 	await get_tree().create_timer(5).timeout # TODO: signal
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://world/start_menu.tscn")
 
 
 func _on_game_ui_timer_start() -> void:
 	#print("start")
 	timer_day.start()
+
+
+func _on_player_awarded(negative: bool) -> void:
+	var success: bool = not (negative == current_emoji_negative)
+	if success:
+		GameManager.correct_awards += 1
+		GameManager.current_wage += GameManager.award_wage_amount
+
+
+func _on_citizen_damage_taken(negative_opinion: bool) -> void:
+	var success: bool = negative_opinion == current_emoji_negative
+	GameManager.total_punishes += 1
+	if success:
+		GameManager.correct_punishes += 1
+		GameManager.current_wage += GameManager.punish_wage_amount
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

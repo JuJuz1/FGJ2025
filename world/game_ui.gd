@@ -62,7 +62,6 @@ func update_time(time: int) -> void:
 
 func hide_time() -> void:
 	label_time.hide()
-	label_awards.hide()
 
 
 func show_time() -> void:
@@ -95,3 +94,5 @@ func show_task(emoji: EmojiData, negative: bool) -> void:
 func _process(_delta: float) -> void:
 	label_awards.text = "Awards left: " + str(GameManager.awards_left)
 	label_wage.text = "Total wage: " + str(GameManager.total_wage)
+	print("Current: ", GameManager.current_wage)
+	print("Total: ", GameManager.total_wage)

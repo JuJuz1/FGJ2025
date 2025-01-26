@@ -7,6 +7,8 @@ class_name Citizen
 @export var max_health: int = 100
 @export var current_health: int = max_health
 
+signal damage_taken(latest_negative: bool)
+
 enum Class {BAD, NEUTRAL, GOOD}
 var citizen_class: Class
 
@@ -24,6 +26,8 @@ var speech_bubble_4: PackedScene = preload("res://citizen/speech_bubble_4.tscn")
 var bubble
 var current_emoji: EmojiData
 var positive_opinion_forbidden: bool
+
+var latest_emoji_negative: bool
 
 var knockback: bool = false
 
@@ -49,6 +53,7 @@ func take_damage(amount: int, direction: Vector3) -> void:
 	update_health_label()
 	audio_stream_damage.play()
 	anim_player.play("Run")
+	damage_taken.emit(latest_emoji_negative)
 	if current_health == 0:
 		await audio_stream_damage.finished
 		queue_free()
@@ -126,6 +131,7 @@ func spawn_speech_bubble():
 		add_child(bubble)
 	
 	var is_neutral_opinion: bool = randi() % 1000 < 200  # 20% chance to be true
+	latest_emoji_negative = false
 	match self.citizen_class:
 		Class.BAD:
 			if is_neutral_opinion: # Neutral speech bubble, 20% chance
@@ -135,6 +141,7 @@ func spawn_speech_bubble():
 					bubble.create_positive(current_emoji)
 				else: # If negative opinion forbidden, create negative opinion
 					bubble.create_negative(current_emoji)
+					latest_emoji_negative = true
 		Class.NEUTRAL:
 			bubble.create_neutral(current_emoji) # Always neutral
 		Class.GOOD:
@@ -143,5 +150,6 @@ func spawn_speech_bubble():
 			else: # create good opinion, opposite of what is forbidden
 				if positive_opinion_forbidden: # Create negative
 					bubble.create_negative(current_emoji)
+					latest_emoji_negative = true
 				else: # If negative opinion forbidden, create positive
 					bubble.create_positive(current_emoji)

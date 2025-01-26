@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=36 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="Resource" uid="uid://clx4djcv6xvch" path="res://graphics/emojis/EmojiDataSet.tres" id="2_aysyn"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://cwd7v7t7ih3nq" path="res://ui/label_big.tres" id="3_fn3g3"]
 [ext_resource type="PackedScene" uid="uid://bgvcypy3uris4" path="res://graphics/3d/lamp/lamp.tscn" id="4_h5o24"]
 [ext_resource type="LabelSettings" uid="uid://px7soueq4ux4" path="res://ui/label_medium.tres" id="5_llyeo"]
+[ext_resource type="AudioStream" uid="uid://c5qxvqqdg5bn4" path="res://sounds/Driller_Night_Original_Song_by_R-R-Slugger.wav" id="6_0pnie"]
 [ext_resource type="PackedScene" path="res://graphics/3d/tapola_kiosk/tapola_kiosk.tscn" id="8_ai45w"]
 [ext_resource type="PackedScene" uid="uid://c4rb3lcjvgfw1" path="res://graphics/3d/newspaper/newspaper.blend" id="8_ysn08"]
 [ext_resource type="Texture2D" uid="uid://ddihs0sjogbew" path="res://graphics/textures/121_street paving cobblestone texture-seamless.jpg" id="9_4papg"]
@@ -264,6 +265,10 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="TimerDay" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0pnie")
+autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6xmxd")
@@ -809,3 +814,4 @@ transform = Transform3D(3.91255, 0, -3.11319, 0, 5, 0, 3.11319, 0, 3.91255, -10.
 
 [connection signal="timer_start" from="GameUI" to="." method="_on_game_ui_timer_start"]
 [connection signal="timeout" from="TimerDay" to="." method="_on_timer_day_timeout"]
+[connection signal="awarded" from="Player" to="." method="_on_player_awarded"]

@@ -13,6 +13,8 @@ class_name Player
 
 const SENSITIVTY_DIVIDER: int = 100
 
+signal awarded(negative: bool)
+
 @onready var camera_holder: Node3D = $CameraHolder
 @onready var interactor: Interactor = $CameraHolder/Interactor
 
@@ -78,10 +80,11 @@ func _physics_process(delta: float) -> void:
 		if is_instance_valid(interactor.cached):
 			if interactor.cached.owner is Citizen and GameManager.awards_left > 0:
 				if interactor.cached.owner not in awarded_citizens:
+					var citizen: Citizen = interactor.cached.owner
 					hands_anim.play("awarding")
-					awarded_citizens.append(interactor.cached.owner)
+					awarded_citizens.append(citizen)
 					GameManager.awards_left -= 1
-					# TODO: correct?
+					awarded.emit(citizen.latest_emoji_negative)
 	
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
