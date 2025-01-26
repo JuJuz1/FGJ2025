@@ -21,6 +21,6 @@ var current_wage: int = 0 ## Accumulated during the day
 var total_wage: int = 0
 var award_wage_amount: int = 20
 var punish_wage_amount: int = 30
-var wage_threshhold: int = 100 ## TODO change dynamically
+var wage_threshhold: int = 120 ## TODO change dynamically
 var missed_wage_thresholds: int = 0 ## If the player misses the threshold -> increase
 var max_misses: int = 3 ## If this reaches 0 -> the player loses

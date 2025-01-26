@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=41 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="Resource" uid="uid://clx4djcv6xvch" path="res://graphics/emojis/EmojiDataSet.tres" id="2_aysyn"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bgvcypy3uris4" path="res://graphics/3d/lamp/lamp.tscn" id="4_h5o24"]
 [ext_resource type="LabelSettings" uid="uid://px7soueq4ux4" path="res://ui/label_medium.tres" id="5_llyeo"]
 [ext_resource type="AudioStream" uid="uid://c5qxvqqdg5bn4" path="res://sounds/Driller_Night_Original_Song_by_R-R-Slugger.wav" id="6_0pnie"]
+[ext_resource type="Texture2D" uid="uid://bp3g7t5fuxynm" path="res://graphics/emojis/positive/Heart.svg" id="6_llyeo"]
+[ext_resource type="Texture2D" uid="uid://cuckg0lfq7qsj" path="res://graphics/emojis/positive/Good.svg" id="7_2tavo"]
 [ext_resource type="PackedScene" uid="uid://c22bs3vi7w8ly" path="res://graphics/3d/tapola_kiosk/tapola_kiosk.tscn" id="8_ai45w"]
 [ext_resource type="PackedScene" uid="uid://c4rb3lcjvgfw1" path="res://graphics/3d/newspaper/newspaper.blend" id="8_ysn08"]
 [ext_resource type="Texture2D" uid="uid://ddihs0sjogbew" path="res://graphics/textures/121_street paving cobblestone texture-seamless.jpg" id="9_4papg"]
@@ -15,10 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://wsjye3f4h3ln" path="res://graphics/3d/grasspool/grasspool_2.tscn" id="12_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://dh5rtc1qckhyc" path="res://graphics/3d/house1/house_1.tscn" id="13_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://6fysjhehmsf4" path="res://graphics/3d/house2/house2.blend" id="14_h8lre"]
+[ext_resource type="PackedScene" uid="uid://bhrdl6u3ty1o4" path="res://graphics/3d/house2/house_2.tscn" id="14_k8wd0"]
+[ext_resource type="PackedScene" uid="uid://dnuylx7pr2ycd" path="res://graphics/3d/house3/house_3.tscn" id="15_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://b6boowli3w4bn" path="res://graphics/3d/house3/house3.blend" id="15_ysn08"]
 [ext_resource type="PackedScene" uid="uid://dliiyxt2p1pk3" path="res://graphics/3d/round_kiosk/round_kiosk_2.tscn" id="16_h8lre"]
 [ext_resource type="PackedScene" uid="uid://576f0suqm7r2" path="res://graphics/3d/house4/house4.blend" id="16_m0cxt"]
 [ext_resource type="PackedScene" uid="uid://cxjl7qjkfabff" path="res://graphics/3d/tent/tent.tscn" id="18_m0cxt"]
+[ext_resource type="PackedScene" uid="uid://b5dcoqicwo1ky" path="res://graphics/3d/house4/house_triplewindow.tscn" id="19_inp7a"]
 [ext_resource type="PackedScene" uid="uid://bp4uydxehljek" path="res://graphics/3d/tent/tent_bread.tscn" id="19_p2iis"]
 [ext_resource type="PackedScene" uid="uid://v02cxgfb0cib" path="res://graphics/3d/tent_closed_sides/tent_closed_sides.tscn" id="20_aysyn"]
 [ext_resource type="PackedScene" uid="uid://cv88066xp68lx" path="res://graphics/3d/circus_tent/circus_tent.tscn" id="21_aysyn"]
@@ -139,6 +144,7 @@ all_emojis = ExtResource("2_aysyn")
 [node name="GameUI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 script = ExtResource("2_mmdvd")
+all_emojis = ExtResource("2_aysyn")
 
 [node name="LabelDayCounter" type="Label" parent="GameUI"]
 anchors_preset = 8
@@ -169,7 +175,8 @@ offset_right = 207.5
 offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "You lost!"
+text = "You managed your joob poorly. 
+You lost!"
 label_settings = ExtResource("3_fn3g3")
 horizontal_alignment = 1
 
@@ -217,21 +224,54 @@ offset_left = 21.0
 offset_top = 19.0
 offset_right = 198.0
 offset_bottom = 68.0
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 35
 text = "asdasdasd"
 horizontal_alignment = 1
 
-[node name="LabelWage" type="Label" parent="GameUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 23.0
-offset_right = 20.0
-offset_bottom = 46.0
+offset_left = -119.5
+offset_top = 7.0
+offset_right = 119.5
+offset_bottom = 132.0
 grow_horizontal = 2
+theme_override_constants/separation = 15
+
+[node name="LabelWage" type="Label" parent="GameUI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 40
+text = "Total wage"
 horizontal_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="GameUI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LabelTaskShow" type="Label" parent="GameUI/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "Task:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRectNegPos" type="TextureRect" parent="GameUI/VBoxContainer/BoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_llyeo")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRectEmoji" type="TextureRect" parent="GameUI/VBoxContainer/BoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("7_2tavo")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="BoxContainer" type="BoxContainer" parent="GameUI"]
 anchors_preset = 1
@@ -246,6 +286,7 @@ size_flags_horizontal = 8
 
 [node name="LabelTime" type="Label" parent="GameUI/BoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 35
 text = "Time"
 horizontal_alignment = 1
@@ -459,6 +500,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.2484, 0.2, 73.2836)
 [node name="Lamp13" parent="Lamps" instance=ExtResource("4_h5o24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5794, 0.2, 73.2836)
 
+[node name="Lamp14" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.3473, 0.2, 56.3961)
+
+[node name="Lamp15" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.3473, 0.2, 34.3686)
+
+[node name="Lamp16" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.3473, 0.2, 15.8471)
+
+[node name="Lamp17" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.3473, 0.2, 1.86604)
+
+[node name="Lamp18" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.3473, 0.2, -14.8648)
+
+[node name="Lamp19" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.3473, 0.2, -32.2767)
+
 [node name="dictator_statue" parent="." instance=ExtResource("11_mad0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53919, 0.979289, -20.6523)
 
@@ -468,43 +527,43 @@ transform = Transform3D(0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, 0.360664, 
 [node name="house1" parent="houses" instance=ExtResource("13_dqqhb")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 22.9053, -0.0333331, -27.245)
 
-[node name="house2" parent="houses" instance=ExtResource("14_h8lre")]
+[node name="house35" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 3.54024, -0.0333331, -19.8987)
 
-[node name="house3" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house36" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -15.7091, 0.0519293, -12.524)
 
-[node name="house4" parent="houses" instance=ExtResource("16_m0cxt")]
+[node name="white_triplewindow6" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 42.1876, 0.0519293, -34.6912)
 
 [node name="house5" parent="houses" instance=ExtResource("13_dqqhb")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -54.3713, -0.0333331, 2.21713)
 
-[node name="house6" parent="houses" instance=ExtResource("14_h8lre")]
+[node name="house2" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -73.7363, -0.0333331, 9.56348)
 
 [node name="house7" parent="houses" instance=ExtResource("15_ysn08")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -92.9857, 0.0519293, 16.9381)
 
-[node name="house8" parent="houses" instance=ExtResource("16_m0cxt")]
+[node name="white_triplewindow" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -35.089, 0.0519293, -5.22905)
 
 [node name="house9" parent="houses" instance=ExtResource("14_h8lre")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -80.2861, -0.0333331, 23.712)
 
-[node name="house10" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house14" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -72.8202, 0.0519293, 42.8798)
 
 [node name="house11" parent="houses" instance=ExtResource("13_dqqhb")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -65.5369, -0.0333331, 62.2539)
 
-[node name="house12" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house10" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -58.104, 0.0519293, 81.4373)
 
-[node name="house13" parent="houses" instance=ExtResource("16_m0cxt")]
+[node name="white_triplewindow3" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -50.8091, 0.0519293, 100.817)
 
-[node name="house14" parent="houses" instance=ExtResource("14_h8lre")]
+[node name="house8" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -43.0046, -0.0333331, 120.124)
 
 [node name="house15" parent="houses" instance=ExtResource("15_ysn08")]
@@ -522,22 +581,22 @@ transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, 
 [node name="house19" parent="houses" instance=ExtResource("13_dqqhb")]
 transform = Transform3D(-0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, -0.360664, -28.6865, -0.0333331, 126.677)
 
-[node name="house20" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house12" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(-0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, -0.360664, -9.50308, 0.0519293, 119.244)
 
-[node name="house21" parent="houses" instance=ExtResource("16_m0cxt")]
+[node name="white_triplewindow2" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(-0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, -0.360664, 9.87652, 0.0519293, 111.949)
 
-[node name="house22" parent="houses" instance=ExtResource("14_h8lre")]
+[node name="house6" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(-0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, -0.360664, 29.1835, -0.0333331, 104.145)
 
-[node name="house23" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house13" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(-0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, -0.360664, 48.3515, 0.0519293, 96.6789)
 
 [node name="house24" parent="houses" instance=ExtResource("13_dqqhb")]
 transform = Transform3D(-0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, -0.360664, 67.7255, -0.0333331, 89.3954)
 
-[node name="house25" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house20" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(-0.360664, 0, 0.932696, 0, 1, 0, -0.932696, 0, -0.360664, 86.9085, 0.0519293, 81.9627)
 
 [node name="house26" parent="houses" instance=ExtResource("16_m0cxt")]
@@ -549,22 +608,22 @@ transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696
 [node name="house28" parent="houses" instance=ExtResource("15_ysn08")]
 transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696, 101.014, 0.0519293, 87.1789)
 
-[node name="house29" parent="houses" instance=ExtResource("16_m0cxt")]
+[node name="white_triplewindow4" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696, 93.7191, 0.0519293, 67.7993)
 
-[node name="house30" parent="houses" instance=ExtResource("14_h8lre")]
+[node name="house3" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696, 85.9145, -0.0333331, 48.4923)
 
-[node name="house31" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house21" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696, 78.4487, 0.0519293, 29.3243)
 
 [node name="house32" parent="houses" instance=ExtResource("13_dqqhb")]
 transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696, 71.1653, -0.0333331, 9.95034)
 
-[node name="house33" parent="houses" instance=ExtResource("15_ysn08")]
+[node name="house22" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696, 63.7326, 0.0519293, -9.23267)
 
-[node name="house34" parent="houses" instance=ExtResource("16_m0cxt")]
+[node name="white_triplewindow5" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(-0.932696, 0, -0.360664, 0, 1, 0, 0.360664, 0, -0.932696, 56.4375, 0.0519293, -28.6126)
 
 [node name="newspaper" parent="." instance=ExtResource("8_ysn08")]

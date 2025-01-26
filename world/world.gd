@@ -146,7 +146,10 @@ func start_day() -> void:
 
 func game_end():
 	# TODO: win or lose
-	game_ui.show_label_lose()
+	if 2 <= GameManager.missed_wage_thresholds:
+		game_ui.show_label_lose()
+	else:
+		game_ui.show_label_win()
 	await get_tree().create_timer(5).timeout # TODO: signal
 	get_tree().change_scene_to_file("res://world/start_menu.tscn")
 

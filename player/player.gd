@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @export_group("Movement stats")
-@export var speed: float = 4.5
+@export var speed: float =  25   #4.5
 @export var sprint_speed: float = 7.5
 @export var acceleration: float = 3.0
 @export var jump_velocity: float = 5.0

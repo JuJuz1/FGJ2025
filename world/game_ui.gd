@@ -3,6 +3,8 @@ class_name GameUI
 
 signal timer_start ## When we want to start the timer
 
+@export var all_emojis: EmojiDataArrays
+
 @onready var label_day_counter: Label = $LabelDayCounter
 @onready var label_game_lose: Label = $LabelGameLose
 @onready var label_game_win: Label = $LabelGameWin
@@ -11,7 +13,10 @@ signal timer_start ## When we want to start the timer
 @onready var label_time: Label = $BoxContainer/LabelTime
 
 @onready var label_awards: Label = $LabelAwards
-@onready var label_wage: Label = $LabelWage
+
+@onready var v_box_container: VBoxContainer = $VBoxContainer
+@onready var texture_rect_neg_pos: TextureRect = $VBoxContainer/BoxContainer/TextureRectNegPos
+@onready var texture_rect_emoji: TextureRect = $VBoxContainer/BoxContainer/TextureRectEmoji
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
@@ -28,6 +33,8 @@ func hide_labels() -> void:
 	
 	label_time.text = ""
 	label_time.modulate.a = 0
+	
+	v_box_container.modulate.a = 0
 
 
 func show_label_day(day: int) -> void:
@@ -47,11 +54,15 @@ func show_label_time(time: int) -> void:
 	tween.tween_callback(func(): 
 		timer_start.emit()
 		label_awards.modulate.a = 1
-		label_wage.modulate.a = 1)
+		v_box_container.modulate.a = 1)
 
 
 func show_label_lose() -> void:
 	label_game_lose.show()
+
+
+func show_label_win() -> void:
+	label_game_win.show()
 
 
 func update_time(time: int) -> void:
@@ -81,8 +92,13 @@ func show_task(emoji: EmojiData, negative: bool) -> void:
 	label_task.text = "Your task is to analyze citizens and watch their language.\n\n"
 	if negative:
 		label_task.text += "No one shall speak ill of " + emoji.string + "."
+		texture_rect_neg_pos.texture = all_emojis.negative_emoji_array.pick_random().svg
 	else:
 		label_task.text += "No one shall speak good of " + emoji.string + "."
+		texture_rect_neg_pos.texture = all_emojis.positive_emoji_array.pick_random().svg
+	
+	texture_rect_emoji.texture = emoji.svg
+	
 	var tween: Tween = create_tween()
 	tween.tween_interval(8)
 	tween.tween_property(label_task, "modulate:a", 1, 0.5)
@@ -93,6 +109,6 @@ func show_task(emoji: EmojiData, negative: bool) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	label_awards.text = "Awards left: " + str(GameManager.awards_left)
-	label_wage.text = "Total wage: " + str(GameManager.total_wage)
+	$VBoxContainer/LabelWage.text = "Total wage: " + str(GameManager.total_wage)
 	#print("Current: ", GameManager.current_wage)
 	#print("Total: ", GameManager.total_wage)

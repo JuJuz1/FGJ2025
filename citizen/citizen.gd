@@ -82,7 +82,8 @@ func randomise_timer() -> void:
 
 func _on_interactable_focused(interactor: Interactor) -> void:
 	# TODO: outline shader
-	print_debug("Focused ", interactor.owner.name)
+	#print_debug("Focused ", interactor.owner.name
+	pass
 
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
@@ -91,17 +92,20 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 
 
 func _on_interactable_unfocused(interactor: Interactor) -> void:
-	print_debug("Unfocused ", interactor.owner.name)
+	#print_debug("Unfocused ", interactor.owner.name)
+	pass
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
-		print_debug("Player entered ", name)
+		#print_debug("Player entered ", name)
+		pass
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Player:
-		print_debug("Player exited ", name)
+		#print_debug("Player exited ", name)
+		pass
 
 
 func _physics_process(delta: float) -> void:

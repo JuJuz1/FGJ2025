@@ -27,17 +27,6 @@ func set_label_colors() -> void:
 
 
 func focus(interactable: Interactable) -> void:
-	if not interactable.can_interact:
-		return
-	## TODO: different inputs?, export variable to interactable containing key_code
-	var key_name: String
-	for action: InputEvent in InputMap.action_get_events("use"):
-		if action is InputEventKey:
-			key_name = action.as_text_physical_keycode()
-			break
-	var message: String = (interactable.message if interactable.show_first
-		else interactable.alternative_message)
-	#label_interact.text = message + "\n[" + key_name + "]"
 	labels.show()
 	interactable.focused.emit(self)
 
