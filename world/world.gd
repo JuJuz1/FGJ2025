@@ -8,7 +8,7 @@ var current_emoji_negative: bool
 
 ## Time
 var current_time: int = 0
-var starting_time: int = 15 ## TODO: change 420
+var starting_time: int = 240 ## TODO: change 240?
 
 ## Day
 var current_day: int = 1

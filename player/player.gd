@@ -28,6 +28,8 @@ const BATON_HIT = preload("res://player/baton_hit.tscn")
 @onready var audio_attack: AudioStreamPlayer3D = $AudioAttack
 @onready var timer_audio_attack: Timer = $TimerAudioAttack
 
+@onready var raycasts: Node3D = $Raycasts
+
 var latest_damaged_body: Citizen
 var awarded_citizens: Array[Citizen] = []
 
@@ -72,6 +74,13 @@ func _on_timer_audio_attack_timeout() -> void:
 	audio_attack.play()
 
 
+func any_raycast_collide() -> bool:
+	for child: RayCast3D in raycasts.get_children():
+		if child.is_colliding():
+			return true
+	return false
+
+
 # Movement handling
 func _physics_process(delta: float) -> void:
 	if GameManager.freeze:
@@ -82,8 +91,12 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * GameManager.gravity_modifier * delta
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or any_raycast_collide():
+			var original = velocity.y
+			velocity.y = jump_velocity
+			if velocity.y == original:
+				global_position.y += 1.0
 	
 	if Input.is_action_just_pressed("attack") and can_play_hands_anim():
 		hands_anim.play("punch")

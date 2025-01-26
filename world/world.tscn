@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=40 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="Resource" uid="uid://clx4djcv6xvch" path="res://graphics/emojis/EmojiDataSet.tres" id="2_aysyn"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://daqxcvxcklayc" path="res://graphics/3d/dictator_statue/dictator_statue.tscn" id="11_mad0u"]
 [ext_resource type="PackedScene" uid="uid://wsjye3f4h3ln" path="res://graphics/3d/grasspool/grasspool_2.tscn" id="12_ocfjn"]
 [ext_resource type="PackedScene" uid="uid://dh5rtc1qckhyc" path="res://graphics/3d/house1/house_1.tscn" id="13_dqqhb"]
-[ext_resource type="PackedScene" uid="uid://6fysjhehmsf4" path="res://graphics/3d/house2/house2.blend" id="14_h8lre"]
 [ext_resource type="PackedScene" uid="uid://bhrdl6u3ty1o4" path="res://graphics/3d/house2/house_2.tscn" id="14_k8wd0"]
 [ext_resource type="PackedScene" uid="uid://dnuylx7pr2ycd" path="res://graphics/3d/house3/house_3.tscn" id="15_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://b6boowli3w4bn" path="res://graphics/3d/house3/house3.blend" id="15_ysn08"]
@@ -125,6 +124,10 @@ sky_material = SubResource("ProceduralSkyMaterial_tcf2h")
 [sub_resource type="Environment" id="Environment_6xmxd"]
 background_mode = 2
 sky = SubResource("Sky_4717r")
+ambient_light_source = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.08
+volumetric_fog_length = 120.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tcf2h"]
 size = Vector3(500, 1, 500)
@@ -548,7 +551,7 @@ transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 
 [node name="white_triplewindow" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -35.089, 0.0519293, -5.22905)
 
-[node name="house9" parent="houses" instance=ExtResource("14_h8lre")]
+[node name="house4" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -80.2861, -0.0333331, 23.712)
 
 [node name="house14" parent="houses" instance=ExtResource("15_j7vgi")]
