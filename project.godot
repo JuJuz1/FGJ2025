@@ -14,7 +14,9 @@ config/name="FGJ2025"
 run/main_scene="uid://4fldhbdmidvu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=300
-config/icon="res://icon.svg"
+boot_splash/image="uid://xwgho1gl7edh"
+config/icon="uid://xwgho1gl7edh"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 

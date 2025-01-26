@@ -341,7 +341,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62261, 14.1458)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00156212, 0.0536704, -0.00831032)
 shape = SubResource("BoxShape3D_tcf2h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.86616, 0, 39.0496)
 mesh = SubResource("BoxMesh_ov2xu")
 skeleton = NodePath("../..")
 
@@ -469,7 +470,28 @@ transform = Transform3D(0.808524, 0, -0.588463, 0, 1, 0, 0.588463, 0, 0.808524, 
 [node name="Lamps" type="Node3D" parent="."]
 
 [node name="Lamp" parent="Lamps" instance=ExtResource("4_h5o24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.366, 0.2, -3.581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82795, 0.2, -3.581)
+
+[node name="Lamp6" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82795, 0.2, 6.7032)
+
+[node name="Lamp20" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82795, 0.2, 15.0656)
+
+[node name="Lamp21" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82795, 0.2, 25.3498)
+
+[node name="Lamp22" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82795, 0.2, 33.6236)
+
+[node name="Lamp23" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82795, 0.2, 43.9078)
+
+[node name="Lamp30" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.16794, 0.2, 51.489)
+
+[node name="Lamp31" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69708, 0.2, 51.489)
 
 [node name="Lamp2" parent="Lamps" instance=ExtResource("4_h5o24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4244, 0.2, -7.26543)
@@ -522,6 +544,27 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.347
 [node name="Lamp19" parent="Lamps" instance=ExtResource("4_h5o24")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.3473, 0.2, -32.2767)
 
+[node name="Lamp32" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 63.2623, 0.2, -38.2977)
+
+[node name="Lamp33" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 41.2348, 0.2, -38.2977)
+
+[node name="Lamp34" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.7133, 0.2, -38.2977)
+
+[node name="Lamp35" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.7322, 0.2, -38.2977)
+
+[node name="Lamp36" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.99864, 0.2, -38.2977)
+
+[node name="Lamp37" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.4105, 0.2, -38.2977)
+
+[node name="Lamp38" parent="Lamps" instance=ExtResource("4_h5o24")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.7188, 0.2, -22.1502)
+
 [node name="dictator_statue" parent="." instance=ExtResource("11_mad0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53919, 0.979289, -20.6523)
 
@@ -535,7 +578,10 @@ transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 3.54024, -0.0333331, -19.8987)
 
 [node name="house36" parent="houses" instance=ExtResource("15_j7vgi")]
-transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -15.7091, 0.0519293, -12.524)
+transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -18.6644, 0.0519293, -20.1665)
+
+[node name="house37" parent="houses" instance=ExtResource("15_j7vgi")]
+transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -20.7097, 0.0519293, -25.4558)
 
 [node name="white_triplewindow6" parent="houses" instance=ExtResource("19_inp7a")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 42.1876, 0.0519293, -34.6912)
@@ -548,9 +594,6 @@ transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 
 
 [node name="house7" parent="houses" instance=ExtResource("15_ysn08")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -92.9857, 0.0519293, 16.9381)
-
-[node name="white_triplewindow" parent="houses" instance=ExtResource("19_inp7a")]
-transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -35.089, 0.0519293, -5.22905)
 
 [node name="house4" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(0.932696, 0, 0.360664, 0, 1, 0, -0.360664, 0, 0.932696, -80.2861, -0.0333331, 23.712)
@@ -687,6 +730,9 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 16.1103, 0.593034, 5.22931)
 
 [node name="round_kiosk3" parent="Kiosks" instance=ExtResource("16_h8lre")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 16.1103, 0.593034, 14.7269)
+
+[node name="round_kiosk4" parent="Kiosks" instance=ExtResource("16_h8lre")]
+transform = Transform3D(2.45162, 0, -1.72904, 0, 3, 0, 1.72904, 0, 2.45162, 11.1023, 0.593034, 24.8293)
 
 [node name="tapola_kiosk" parent="Kiosks" instance=ExtResource("8_ai45w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25.6541, 1.74279, 2.57489)

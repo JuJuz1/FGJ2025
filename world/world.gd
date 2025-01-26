@@ -1,6 +1,8 @@
 extends Node3D
 ## World script
 
+@export var used_at_start_menu: bool = false
+
 ## Emojis
 @export var all_emojis: EmojiDataArrays
 var current_emoji: EmojiData
@@ -34,6 +36,12 @@ const CITIZEN = preload("res://citizen/citizen.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# TODO: introduction
+	if used_at_start_menu:
+		#create_citizens()
+		player.queue_free()
+		game_ui.hide()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		return
 	
 	current_time = starting_time
 	player.global_position = player_spawn.global_position
@@ -94,9 +102,10 @@ func generate_task() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		# PC escape
-		if event.is_action_pressed("quit"):
-			get_tree().quit()
+		if not used_at_start_menu:
+			# PC escape
+			if event.is_action_pressed("quit"):
+				get_tree().quit()
 
 
 func _on_timer_day_timeout() -> void:

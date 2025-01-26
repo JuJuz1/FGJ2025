@@ -19,6 +19,7 @@ func _ready():
 func get_random_neutral_emoji() -> EmojiData:
 	return all_emojis.neutral_emoji_array[randi() % 39]
 
+
 func get_random_neutral_emoji_except(emoji: EmojiData):
 	var rand_emoji: EmojiData
 	while true:
@@ -148,5 +149,7 @@ func _on_despawn_timer_timeout():
 
 
 func _process(_delta):
+	if not player:
+		return
 	var player_pos: Vector3 = player.position
 	self.look_at(player_pos, Vector3.UP, true)
