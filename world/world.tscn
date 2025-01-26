@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://nnnrly5tpmym"]
+[gd_scene load_steps=41 format=3 uid="uid://nnnrly5tpmym"]
 
 [ext_resource type="Script" uid="uid://djdneaenloyew" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="Resource" uid="uid://clx4djcv6xvch" path="res://graphics/emojis/EmojiDataSet.tres" id="2_aysyn"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bqo4wxbyddomj" path="res://graphics/3d/speaker_booth/speaker_booth.tscn" id="22_o1net"]
 [ext_resource type="PackedScene" uid="uid://cprueilp7hyqg" path="res://graphics/3d/outdoor_chair/outdoor_chair.tscn" id="23_3ljsx"]
 [ext_resource type="PackedScene" uid="uid://bmrs7k2d3ijqo" path="res://graphics/3d/outdoor_table/outdoor_table.tscn" id="24_gi7ib"]
+[ext_resource type="PackedScene" uid="uid://ddf35v264rucd" path="res://graphics/3d/cabin/cabin.tscn" id="30_inp7a"]
 
 [sub_resource type="Animation" id="Animation_4papg"]
 length = 0.001
@@ -894,6 +895,30 @@ transform = Transform3D(3.52874, 0, -3.54232, 0, 5, 0, 3.54232, 0, 3.52874, -12.
 
 [node name="outdoor_chair46" parent="OutdoorChairs" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(3.91255, 0, -3.11319, 0, 5, 0, 3.11319, 0, 3.91255, -10.3093, 0.40767, 53.7559)
+
+[node name="cabin" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 64.015, 2.05367, 30.7869)
+
+[node name="cabin2" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 64.015, 2.05367, 39.7869)
+
+[node name="cabin3" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 64.015, 2.05367, 47.7869)
+
+[node name="cabin4" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 64.1552, 2.05367, 56.8682)
+
+[node name="cabin5" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 56.1225, 2.05367, 65.0627)
+
+[node name="cabin6" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 47.1225, 2.05367, 65.0627)
+
+[node name="cabin7" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.1225, 2.05367, 65.0627)
+
+[node name="cabin8" parent="." instance=ExtResource("30_inp7a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.0412, 2.05367, 65.203)
 
 [connection signal="timer_start" from="GameUI" to="." method="_on_game_ui_timer_start"]
 [connection signal="timeout" from="TimerDay" to="." method="_on_timer_day_timeout"]
