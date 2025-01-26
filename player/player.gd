@@ -2,8 +2,8 @@ extends CharacterBody3D
 class_name Player
 
 @export_group("Movement stats")
-@export var speed: float =  25   #4.5
-@export var sprint_speed: float = 7.5
+@export var speed: float = 6.5
+@export var sprint_speed: float = 9.5
 @export var acceleration: float = 3.0
 @export var jump_velocity: float = 5.0
 @export_group("Combat")
@@ -33,6 +33,8 @@ const BATON_HIT = preload("res://player/baton_hit.tscn")
 var latest_damaged_body: Citizen
 var awarded_citizens: Array[Citizen] = []
 
+var time_limit_space_bar: float = 1.0
+var space_bar_held: float
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -97,6 +99,14 @@ func _physics_process(delta: float) -> void:
 			velocity.y = jump_velocity
 			if velocity.y == original:
 				global_position.y += 1.0
+				velocity.y = 0
+	
+	if Input.is_action_pressed("jump"):
+		space_bar_held += delta
+		if time_limit_space_bar <= space_bar_held:
+			space_bar_held = 0
+			global_position.y += 1.0
+			velocity.y = 0
 	
 	if Input.is_action_just_pressed("attack") and can_play_hands_anim():
 		hands_anim.play("punch")
