@@ -577,8 +577,11 @@ transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 
 [node name="house35" parent="houses" instance=ExtResource("14_k8wd0")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, 3.54024, -0.0333331, -19.8987)
 
+[node name="house38" parent="houses" instance=ExtResource("14_k8wd0")]
+transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -35.1154, -0.0333331, -4.95097)
+
 [node name="house36" parent="houses" instance=ExtResource("15_j7vgi")]
-transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -18.6644, 0.0519293, -20.1665)
+transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -15.6555, 0.0519293, -12.3853)
 
 [node name="house37" parent="houses" instance=ExtResource("15_j7vgi")]
 transform = Transform3D(0.360664, 0, -0.932696, 0, 1, 0, 0.932696, 0, 0.360664, -20.7097, 0.0519293, -25.4558)

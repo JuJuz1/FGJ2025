@@ -1,17 +1,18 @@
 extends Node3D
 ## Start menu
 
-@onready var credits_screen: Control = $Control/CreditsScreen
+@onready var credits_screen: Control = $CreditsScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	credits_screen.hide()
 	if not GameManager.start_from_start_screen:
 		start_game()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit") and credits_screen.visible:
-		pass
+		credits_screen.hide()
 
 
 func _on_button_start_pressed() -> void:
@@ -19,8 +20,7 @@ func _on_button_start_pressed() -> void:
 
 
 func _on_button_credits_pressed() -> void:
-	pass # Replace with function body.
-	# TODO
+	credits_screen.show()
 
 
 func _on_button_quit_pressed() -> void:

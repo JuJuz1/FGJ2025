@@ -56,8 +56,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
-[node name="CreditsScreen" parent="Control" instance=ExtResource("3_8wri1")]
-layout_mode = 1
+[node name="CreditsScreen" parent="." instance=ExtResource("3_8wri1")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09733, 4.66012)

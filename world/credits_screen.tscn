@@ -1,4 +1,12 @@
-[gd_scene format=3 uid="uid://5eeg44mlhf7w"]
+[gd_scene load_steps=4 format=3 uid="uid://5eeg44mlhf7w"]
+
+[ext_resource type="Script" uid="uid://c57mmmi1tk2uk" path="res://world/credits_screen.gd" id="1_diq81"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaxj0"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diq81"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
@@ -8,34 +16,125 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_diq81")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yaxj0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer3"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Programming and design:"
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label10" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Programming and emojis:"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Label8" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "3D and level design:"
+
+[node name="Label9" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Design, audio and a \"dictator\":"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 10
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Juuso Piippo"
+
+[node name="Label6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Elias Lehtinen"
+
+[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Eetu Rantakangas"
+
+[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Samiin Agampodi"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "All emojis designed by OpenMoji – the open-source emoji and icon project.  
+License: CC BY-SA 4.0"
+
+[node name="Label6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Music by R.R. Slugger"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="PanelContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_diq81")
+
+[node name="ButtonBack" type="Button" parent="PanelContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 70
+text = "Back"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/MarginContainer/ButtonBack" to="." method="_on_button_back_pressed"]
